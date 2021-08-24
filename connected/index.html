@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faouzi Mohamed | Evote app</title>
+    <link
+      rel="shortcut icon"
+      href="/images/logo/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="styles/userMenuCard.header.css" />
+    <link
+      rel="preload"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="root">
+      <div class="left-side-wrapper">
+        <header class="left-side">
+          <a href="/" class="site-logo-link">
+            <img
+              src="/images/e-vote-ws.svg"
+              width="70"
+              alt="Website logo"
+              class="site-logo"
+            />
+          </a>
+          <div class="username-wrap">
+            <h1 class="left-side-title">
+              <a class="user-profil-link" href="/#">
+                <div class="img-profil-wrapper">
+                  <img
+                    src="/images/coder.gif"
+                    width="50"
+                    alt="User profile picture"
+                    class="userprofil-pic"
+                  />
+                </div>
+                <span class="user-fullname"> Faouzi Mohamed </span>
+              </a>
+            </h1>
+          </div>
+          <nav class="site-nav">
+            <ul class="site-nav-list">
+              <li class="site-nav-item">
+                <a href="#" class="site-nav-link active-tab">
+                  <i class="left-nav-icon fas fa-person-booth"> </i>
+                  <span class="nav-text">Vote</span>
+                </a>
+              </li>
+              <li class="site-nav-item">
+                <a href="#" class="site-nav-link">
+                  <i class="left-nav-icon fas fa-id-card"> </i>
+                  <span class="nav-text">Candidates</span>
+                </a>
+              </li>
+              <li class="site-nav-item">
+                <a href="#" class="site-nav-link">
+                  <i class="left-nav-icon fas fa-chart-bar"> </i>
+                  <span class="nav-text">Results</span>
+                </a>
+              </li>
+              <li class="site-nav-item">
+                <a href="#" class="site-nav-link">
+                  <i class="left-nav-icon fas fa-user"> </i>
+                  <span class="nav-text">Profile</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+      <div class="main-page-wrapper">
+        <div class="main-page-navbar">
+          <ul class="top-nav-bar">
+            <li class="top-nav-bar-item">
+              <button class="top-nav-bar-btn lang-btn">
+                <img
+                  src="/images/icons/english.svg"
+                  class="lang-flag"
+                  alt="English flag"
+                  width="50"
+                />
+                <div class="lang-container hidden">
+                  <ul class="lang-list">
+                    <li class="lang-item">
+                      <img
+                        src="/images/icons/english.svg"
+                        alt="English"
+                        class="lang-img"
+                      />
+                    </li>
+                    <li class="lang-item">
+                      <img
+                        src="/images/icons/french.svg"
+                        alt="French"
+                        class="lang-img"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </button>
+            </li>
+            <li class="top-nav-bar-item">
+              <button class="top-nav-bar-btn notif-btn">
+                <i class="fas fa-bell fa-1x"> </i>
+              </button>
+            </li>
+            <li class="top-nav-bar-item">
+              <button class="top-nav-bar-btn profil-btn">
+                <img
+                  alt="User profile picture"
+                  class="user-profil-thumb"
+                  src="/images/coder.gif"
+                  title="Faouzi Mohamed's profile picture"
+                  width="40"
+                />
+                <div class="user-menu-card hidden" aria-label="menu">
+                  <div class="user-profile">
+                    <figure class="user-figure">
+                      <div class="user-picture-wrapper">
+                        <img
+                          src="/images/coder.gif"
+                          alt="User profile picture"
+                          class="user-picture"
+                          width="138"
+                          height="138"
+                        />
+                      </div>
+                      <figcaption class="user-name">Faouzi Mohamed</figcaption>
+                    </figure>
+                  </div>
+                  <nav class="user-actions-wrapper">
+                    <ul class="action-wrapper">
+                      <li class="actions-item">
+                        <a href="/myaccount" class="action-item-link">
+                          <i class="far fa-user-alt"> </i>
+                          <span class="link-action-text">Account</span>
+                        </a>
+                      </li>
+                      <li class="actions-item">
+                        <a href="/notifs" class="action-item-link">
+                          <i class="fas fa-bell"> </i>
+                          <span class="link-action-text">Setting</span>
+                        </a>
+                      </li>
+                      <li class="actions-item">
+                        <a
+                          href="/logout"
+                          class="action-item-link action-logout"
+                        >
+                          <span class="link-action-text">Logout</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <main class="main-content-root">
+          <header class="main-content-header">
+            <h2 class="greeting-msg">Hi, welcome back</h2>
+          </header>
+          <div class="main-content-wrapper"></div>
+        </main>
+      </div>
+    </div>
+    <script src="/js/main.js" type="module"></script>
+  </body>
+</html>

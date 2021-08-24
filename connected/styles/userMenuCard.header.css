@@ -1,0 +1,112 @@
+/* User Card in the right of the main header */
+
+.user-profil-thumb {
+  /* background-color: #223344; */
+  border: 1px solid #b5c2c2;
+  border-radius: 50%;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.user-menu-card {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.6rem);
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  cursor: auto;
+  min-width: 5rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(14, 14, 14, 0.438);
+  background-color: #fff4fb;
+  color: rgb(12, 12, 12);
+  box-shadow: 0 0 5px #223344;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 100;
+}
+
+.user-figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.user-picture-wrapper {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding-block: 0.4rem;
+  width: 7.6rem;
+  height: 7.6rem;
+}
+
+.user-picture {
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.user-name {
+  display: block;
+  padding-block-start: 0.5rem;
+  padding-inline: 0.2rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: #0026a534;
+  width: 100%;
+  border-block-end: 3px solid #0026a5c0;
+}
+
+.action-wrapper {
+  display: flex;
+  width: 100%;
+  flex-flow: column;
+  align-items: flex-start;
+  list-style-type: none;
+  border-radius: 0 0 0.65rem 0.65rem;
+  padding-block-start: 0.5rem;
+}
+
+.actions-item {
+  flex: 1 0 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.action-item-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.26em 0.5rem;
+  background-color: #fff4fb;
+  text-decoration: none;
+  text-align: start;
+  color: #000b33;
+}
+
+.action-logout {
+  width: 90%;
+  margin-block: 0.4rem 0.5rem;
+  border: 1px solid #3f4d5e;
+  align-self: center;
+  text-align: center;
+  justify-content: center;
+  border-radius: 0.65rem;
+}
+
+.action-item-link:hover {
+  background-color: #d0dafff8;
+}
+.action-logout:hover {
+  background-color: #faffbf;
+}
