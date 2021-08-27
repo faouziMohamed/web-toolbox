@@ -29,6 +29,8 @@ export class CandidateCard {
     this.data = candidateData;
     this.lang = lang;
     this.candidateCard = null;
+    this.skills = '';
+    this.picturePath = '';
     try {
       this.createCandidateCard();
     } catch (error) {
@@ -42,6 +44,24 @@ export class CandidateCard {
       this.createCandidateCard();
     }
     return this.candidateCard;
+  }
+  getPicturePath() {
+    return this.picturePath;
+  }
+
+  getName() {
+    return this.data.name;
+  }
+  getSkillsData() {
+    return this.skills;
+  }
+
+  getId() {
+    return this.candidateID;
+  }
+
+  getBioData() {
+    return this.data.description[this.lang].details;
   }
 
   getMoreDetailsButton() {
@@ -116,18 +136,19 @@ export class CandidateCard {
 
   createCandidateDetails() {
     const { skills: skillsArray } = this.data.description[this.lang];
-    let skills = skillsArray.join(' | ');
+    this.skills = skillsArray.join(' | ');
     this.candidateDetails = newElement(
       'small',
       { class: 'candidate-description__skills' },
-      [skills],
+      [this.skills],
     );
   }
 
   createProfilPicture() {
+    this.picturePath = `/images/candidates/${this.candidateID}`;
     this.profilPicture = newElement('img', {
       class: 'candidate-figure__picture',
-      src: `/images/candidates/${this.candidateID}`,
+      src: this.picturePath,
       alt: `${this.data.name} Profile picture`,
     });
   }
