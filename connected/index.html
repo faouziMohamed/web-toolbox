@@ -10,7 +10,6 @@
       href="/images/logo/favicon-32x32.png"
       type="image/x-icon"
     />
-    <link rel="stylesheet" href="styles/userMenuCard.header.css" />
     <link
       rel="preload"
       href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
@@ -28,102 +27,127 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="root">
-      <div class="left-side-wrapper">
-        <header class="left-side">
-          <a href="/" class="site-logo-link">
+      <div class="left-side">
+        <header class="left-side__header">
+          <a href="/" class="left-side__site-logo-link">
             <img
               src="/images/e-vote-ws.svg"
               width="70"
               alt="Website logo"
-              class="site-logo"
+              class="left-side__site-logo"
             />
           </a>
-          <div class="username-wrap">
-            <h1 class="left-side-title">
-              <a class="user-profil-link" href="/#">
-                <div class="img-profil-wrapper">
+          <div class="left-side__username-wrap">
+            <h1 class="left-side__title">
+              <a class="left-side__user-profil-link" href="/#">
+                <div class="left-side__img-profil-wrapper">
                   <img
                     src="/images/coder.gif"
                     width="50"
                     alt="User profile picture"
-                    class="userprofil-pic"
+                    class="left-side__userprofil-pic"
                   />
                 </div>
-                <span class="user-fullname"> Faouzi Mohamed </span>
+                <span class="left-side__user-fullname"> Faouzi Mohamed </span>
               </a>
             </h1>
           </div>
-          <nav class="site-nav">
-            <ul class="site-nav-list">
-              <li class="site-nav-item">
-                <a href="#" class="site-nav-link active-tab">
+          <nav class="site-nav"">
+            <ul class="site-nav__list">
+              <li class="site-nav__item">
+                <a href="#" class="site-nav__link active-tab">
                   <i class="left-nav-icon fas fa-person-booth"> </i>
                   <span class="nav-text">Vote</span>
                 </a>
               </li>
-              <li class="site-nav-item">
-                <a href="#" class="site-nav-link">
+              <li class="site-nav__item">
+                <a href="#" class="site-nav__link">
                   <i class="left-nav-icon fas fa-id-card"> </i>
                   <span class="nav-text">Candidates</span>
                 </a>
               </li>
-              <li class="site-nav-item">
-                <a href="#" class="site-nav-link">
+              <li class="site-nav__item">
+                <a href="#" class="site-nav__link">
                   <i class="left-nav-icon fas fa-chart-bar"> </i>
                   <span class="nav-text">Results</span>
                 </a>
               </li>
-              <li class="site-nav-item">
-                <a href="#" class="site-nav-link">
+              <li class="site-nav__item">
+                <a href="#" class="site-nav__link">
                   <i class="left-nav-icon fas fa-user"> </i>
                   <span class="nav-text">Profile</span>
+                </a>
+              </li>
+              <li class="site-nav__item">
+                <a href="#" class="site-nav__link">
+                  <i class="left-nav-icon fas fa-user-cog"></i>
+                  <span class="nav-text">Admin</span>
                 </a>
               </li>
             </ul>
           </nav>
         </header>
       </div>
-      <div class="main-page-wrapper">
-        <div class="main-page-navbar">
-          <ul class="top-nav-bar">
-            <li class="top-nav-bar-item">
-              <button class="top-nav-bar-btn lang-btn">
+      <div class="main-page">
+        <div class="main-page__navbar">
+          <div class="burger-menu">
+            <input
+              type="checkbox"
+              id="menu-toggler"
+              class="burger-menu__checkbox"
+            />
+            <label for="menu-toggler" class="burger-menu__label"></label>
+          </div>
+
+          <ul class="top-navbar">
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn lang-btn">
                 <img
                   src="/images/icons/english.svg"
                   class="lang-flag"
                   alt="English flag"
                   width="50"
                 />
-                <div class="lang-container hidden">
+                <div class="lang-drop-down hidden" aria-hidden="true">
                   <ul class="lang-list">
-                    <li class="lang-item">
+                    <li class="lang-item" tabindex="0" data-lang="en">
                       <img
                         src="/images/icons/english.svg"
                         alt="English"
                         class="lang-img"
+                        data-lang="en"
                       />
+                      <span class="lang-text">English</span>
                     </li>
-                    <li class="lang-item">
+                    <li class="lang-item" tabindex="0" data-lang="fr">
                       <img
                         src="/images/icons/french.svg"
                         alt="French"
                         class="lang-img"
-                      />
+                        data-lang="fr"
+                        />
+                      <span class="lang-text">French</span>
                     </li>
                   </ul>
                 </div>
               </button>
             </li>
-            <li class="top-nav-bar-item">
-              <button class="top-nav-bar-btn notif-btn">
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn notif-btn">
                 <i class="fas fa-bell fa-1x"> </i>
               </button>
             </li>
-            <li class="top-nav-bar-item">
-              <button class="top-nav-bar-btn profil-btn">
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn profil-btn">
                 <img
                   alt="User profile picture"
                   class="user-profil-thumb"
@@ -134,11 +158,11 @@
                 <div class="user-menu-card hidden" aria-label="menu">
                   <div class="user-profile">
                     <figure class="user-figure">
-                      <div class="user-picture-wrapper">
+                      <div class="user-picture">
                         <img
                           src="/images/coder.gif"
                           alt="User profile picture"
-                          class="user-picture"
+                          class="user-picture-img"
                           width="138"
                           height="138"
                         />
@@ -148,19 +172,19 @@
                   </div>
                   <nav class="user-actions-wrapper">
                     <ul class="action-wrapper">
-                      <li class="actions-item">
+                      <li class="action-item">
                         <a href="/myaccount" class="action-item-link">
                           <i class="far fa-user-alt"> </i>
                           <span class="link-action-text">Account</span>
                         </a>
                       </li>
-                      <li class="actions-item">
+                      <li class="action-item">
                         <a href="/notifs" class="action-item-link">
                           <i class="fas fa-bell"> </i>
                           <span class="link-action-text">Setting</span>
                         </a>
                       </li>
-                      <li class="actions-item">
+                      <li class="action-item">
                         <a
                           href="/logout"
                           class="action-item-link action-logout"
@@ -177,9 +201,69 @@
         </div>
         <main class="main-content-root">
           <header class="main-content-header">
+            <div class="breadcrumb">
+              <div class="base breadcrumb__path">Home</div>
+              <div class="breadcrumb__path active">Vote</div>
+            </div>
             <h2 class="greeting-msg">Hi, welcome back</h2>
           </header>
-          <div class="main-content-wrapper"></div>
+          <div class="main-content">
+            <div class="candidate-cards-wrapper">
+              <div
+                class="candidate-modal-container hidden"
+                tabindex="0"
+                aria-labelledby="candidate-full-details__name"
+                aria-describedby="candidate-modal-description"
+                aria-hidden="true"
+                id="candidate-modal-container"
+              >
+                <div class="candidate-modal" role="document">
+                  <button
+                    data-a11y-dialog-hide
+                    class="candidate-modal__close-btn"
+                    aria-label="Close this dialog window"
+                    tabindex="0"
+                    id="candidate-modal__close-btn"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                  <div class="candidate-modal-profile">
+                    <img
+                      src="/images/candidates/16145"
+                      alt="Mohamed Faouzi's Profile picture"
+                      class="candidate-modal-profile__picture"
+                      width="200"
+                      tabindex="0"
+                    />
+                  </div>
+                  <section class="candidate-full-details">
+                    <header class="candidate-full-details__headings">
+                      <h2
+                        class="candidate-full-details__name"
+                        id="candidate-full-details__name"
+                      >
+                        Mohamed Faouzi
+                      </h2>
+                      <h3 class="candidate-full-details__name">
+                        Web dev | Software engineer | Cloud engineer | Data
+                        scientist
+                      </h3>
+                    </header>
+                    <section
+                      class="candidate-full-details__bio"
+                      tabindex="1"
+                      id="candidate-full-details__bio"
+                    >
+                      I am a software engineer and I love to build things.
+                      During years, I got skills in lot of field. Datascience,
+                      web developement, Cloud engineer. Now I'm ready to be the
+                      team leader to help my team for the best experience.
+                    </section>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>

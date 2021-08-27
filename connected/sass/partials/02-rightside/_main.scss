@@ -1,0 +1,6 @@
+@use '../mixins/global-mixin' as *;
+
+.main-content {
+  @include useFlexbox(column, $jt: 0, $al: center);
+  padding: 1rem;
+}

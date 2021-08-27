@@ -1,0 +1,129 @@
+@use '../variables' as v;
+@use '../mixins/global-mixin' as *;
+
+.candidate-cards-wrapper {
+  @include useFlexbox();
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex: 1 1 100%;
+}
+
+%radius-6rem {
+  border-radius: 0.6rem;
+}
+%no-bg {
+  background-color: transparent;
+}
+
+%full-size {
+  @include useSquareSize(100%);
+}
+
+.candidate-card {
+  @include useFlexbox(column, $al: center, $jt: 0, $inline: 1);
+  @extend %radius-6rem;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 600;
+  font-size: 1.28rem;
+  color: #222325;
+  width: 15rem;
+  flex: 0 0 15rem;
+  background-color: #f5f7ff;
+  border: 1px solid rgba(v.$primary_color, $alpha: 0.2);
+  box-shadow: 0 0 0.1rem 0.01rem rgba(v.$primary_color, $alpha: 0.5);
+  padding-block-end: 0.5rem;
+
+  &__figure {
+    @include useFlexbox(column, center, 0);
+    padding: 0.5rem;
+    @extend %radius-6rem;
+    flex: 1 0 100%;
+  }
+
+  &__more-details {
+    @include useFlexbox(column);
+    @include usePosition(absolute, $top: 0, $left: 0);
+    @extend %full-size;
+    background-color: rgba(v.$primary_color, $alpha: 0.15);
+    display: none;
+    z-index: 11;
+
+    @at-root .more-details-btn {
+      $color: #001638;
+      display: block;
+      padding: 0.5rem 0.7rem;
+      background-color: v.$light_secondary_color;
+      background-image: linear-gradient(
+        45deg,
+        rgba($color, $alpha: 0.5),
+        $color 50%,
+        rgba($color, $alpha: 0.5)
+      );
+      border: none;
+      box-shadow: 0 0 0.5rem 0.01rem #000824f5;
+
+      border-radius: 0.6rem;
+      color: #ffffff;
+      font-weight: 400;
+      font-style: italic;
+      font-family: v.$main_font;
+    }
+
+    @at-root .info-indicator-wrapper {
+      @include useFlexbox($jt: flex-end, $al: flex-start);
+      @include usePosition(absolute, $top: 0, $right: 0);
+      @extend %no-bg;
+      z-index: 10;
+
+      @at-root .info-indicator {
+        @include usePosition(relative, $top: 0.3rem, $right: 0.3rem);
+        @extend %no-bg;
+        color: #464646b1;
+        border: none;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &:is(:hover, :focus) {
+    box-shadow: 0 0 0.2rem 0.05rem v.$primary_color;
+    .candidate-card__more-details {
+      display: flex;
+    }
+    & .info-indicator {
+      color: #111111;
+    }
+  }
+}
+
+.candidate-figure {
+  &__top-details {
+    width: 13.875rem;
+    height: 14.375rem;
+    position: relative;
+  }
+  &__picture {
+    @extend %radius-6rem;
+    @extend %full-size;
+    object-fit: cover;
+  }
+}
+
+.candidate-description {
+  @include useFlexbox(column, $al: center, $jt: 0);
+  border-block-end: 1px solid #7e7c7c;
+
+  &__skills {
+    max-width: 13rem;
+    font-size: 0.8rem;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.vote-btn {
+  border: none;
+  align-self: center;
+}

@@ -1,0 +1,82 @@
+@mixin useFlexbox($dir: row, $jt: center, $al: center, $inline: 0) {
+  @if $inline==0 {
+    display: flex;
+  } @else {
+    display: inline-flex;
+  }
+  @if $dir != 0 {
+    flex-direction: $dir;
+  }
+  @if $jt !=0 {
+    justify-content: $jt;
+  }
+  @if $al !=0 {
+    align-items: $al;
+  }
+}
+
+@mixin usePosition(
+  $position: relative,
+  $top: none,
+  $left: none,
+  $right: none,
+  $bottom: none
+) {
+  position: $position;
+  @if $top != none {
+    top: $top;
+  }
+  @if $left != none {
+    left: $left;
+  }
+
+  @if ($right != none) {
+    right: $right;
+  }
+
+  @if ($bottom != none) {
+    bottom: $bottom;
+  }
+}
+
+@mixin useSquareSize($size: 1em) {
+  width: $size;
+  height: $size;
+}
+
+@mixin userCenter($dir, $jt, $al) {
+  @include useFlexbox($dir, $jt, $al);
+}
+@mixin useVerticalCenter() {
+  @include userCenter($dir: row, $jt: 0, $al: center);
+}
+
+@mixin useHorizontalCenter() {
+  @include userCenter($dir: column, $jt: center, $al: 0);
+}
+
+@mixin useBorderRadius($radius: 0) {
+  border-radius: $radius;
+}
+
+// @mixin theme($primary-color, $rotate: 120deg, $darkenpct: 20%) {
+//   .btn-primary {
+//     @include button-base($primary-color);
+//   }
+//   .btn-secondary {
+//     @include button-base(
+//       darken(adjust-hue($primary-color, $rotate), $darkenpct)
+//     );
+//   }
+//   .btn-more-details {
+//     @include button-base(
+//       darken(adjust-hue($primary-color, 360deg - $rotate), $darkenpct)
+//     );
+//   }
+
+//   .btn-other2 {
+//     @include button-base(
+//       darken(adjust-hue($primary-color, 180deg), $darkenpct)
+//     );
+//   }
+// }
