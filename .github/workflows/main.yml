@@ -3,25 +3,23 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - main
-    
-jobs: 
+      - main
+
+jobs:
   test-node-compile:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      
+
       - name: Install and build
         run: |
           npm install -g sass
           sass connected/sass/:connected/styles/
-          
+          # Append /web-toolbox in every local url in the html files 
+          sed -i 's#="/\(.\+\)"#"/web-toolbox/\1"#g' connected/*.html
       - name: deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: release
           folder: connected/
-      
-      
-      
