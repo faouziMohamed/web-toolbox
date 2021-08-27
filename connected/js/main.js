@@ -5,10 +5,11 @@ import {
 } from './candidate-card.js';
 import { CandidateModal } from './candidate-modal.js';
 import { useDropDown } from './header-drop-down.js';
+import { useHeaderMenu } from './headerMenu.js';
 
 useDropDown('user-profil-thumb', 'user-menu-card');
 useDropDown('lang-flag', 'lang-drop-down');
-
+useHeaderMenu();
 (async () => {
   const { data } = await fetchAllCandidateDetails();
 

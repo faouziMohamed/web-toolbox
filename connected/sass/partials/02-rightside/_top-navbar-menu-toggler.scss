@@ -62,3 +62,8 @@ $burger-primary-color: #001044;
     @include use-TranslateY-rotate($sign: '-');
   }
 }
+
+.left-side__oppened {
+  @include usePosition(absolute, none, 205px);
+  z-index: v.$level_one_zindex;
+}

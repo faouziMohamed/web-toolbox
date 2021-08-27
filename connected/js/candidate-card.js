@@ -144,8 +144,7 @@ export class CandidateCard {
     );
   }
 
-  createProfilPicture() {
-    const ROOT = '';
+  createProfilPicture(ROOT = '') {
     this.picturePath = `${ROOT}/images/candidates/${this.candidateID}`;
     this.profilPicture = newElement('img', {
       class: 'candidate-figure__picture',
