@@ -22,6 +22,8 @@ jobs:
           # Replace ${API_URL} by /web-toolbox in every js file 
           # in the connected/js directory 
           sed -i 's#${API_URL}#/web-toolbox#g' connected/js/*.js
+          sed -i 's#${ROOT}#/web-toolbox#g' connected/js/*.js
+          
       - name: deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
