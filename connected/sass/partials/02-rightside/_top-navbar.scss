@@ -58,11 +58,11 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  font-size: 0.88rem;
+  font-size: 0.98rem;
 }
 .lang-drop-down {
-  @include usePosition(absolute, 105%, 0, 0, 0);
-  width: 6rem;
+  @include usePosition(absolute, calc(100% + 0.7rem), -0.3rem, 0, 0);
+  width: 8rem;
   z-index: v.$level_one_zindex;
   background-color: rgba(v.$primary_color, 0.53);
 }
@@ -85,10 +85,16 @@
   gap: 0.5rem;
   flex: 1;
   padding: 0.2rem;
+  flex-basis: 2.5rem;
+  align-items: stretch;
   &:hover,
   &:focus {
     background-color: rgba(v.$primary_color, 0.13);
   }
+}
+
+.lang-text {
+  align-self: center;
 }
 
 .main-content-root {
