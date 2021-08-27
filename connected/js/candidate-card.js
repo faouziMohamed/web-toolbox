@@ -1,7 +1,7 @@
 import { newElement } from './utils/dom-utils.js';
 
 export const fetchAllCandidateDetails = async () => {
-  const API_URL = 'http://localhost:8087';
+  const API_URL = '';
   const response = await fetch(`${API_URL}/candidate/details/data.json`);
   const data = await response.json();
   return data;
