@@ -9,13 +9,15 @@ export const useHeaderMenu = () => {
     leftSide.classList.toggle('left-side__closed');
     contentRoot.classList.toggle(['prevent-scroll'], ['blur']);
     burgerMenu.classList.toggle('left-side__oppened');
-    input.checked = !input.checked;
   };
 
   setDefaultStates(leftSide, contentRoot, burgerMenu, input);
   input.addEventListener('change', toggle);
   const closeArea = document.querySelector('.left-side__clickToClose');
-  closeArea.addEventListener('click', toggle);
+  closeArea.addEventListener('click', () => {
+    toggle();
+    input.checked = false;
+  });
 
   /**
    *  const media = window.matchMedia('(min-width: 780px)');
@@ -34,6 +36,7 @@ export const useHeaderMenu = () => {
 };
 function setDefaultStates(leftSide, contentRoot, burgerMenu, input) {
   leftSide.classList.add('left-side__closed');
+  leftSide.classList.remove('hidden');
   contentRoot.classList.remove(['prevent-scroll'], ['blur']);
   burgerMenu.classList.remove('left-side__oppened');
   input.checked = false;
