@@ -10,6 +10,8 @@ $burger-primary-color: #001044;
 
 .burger-menu {
   @include useFlexbox(0, flex-start);
+  transform: translateX(0);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 
 .burger-menu__label {
@@ -64,9 +66,8 @@ $burger-primary-color: #001044;
 }
 
 .left-side__oppened {
-  @include usePosition(relative, none, 205px);
+  transform: translateX(v.$left_side_width - 4.5);
   z-index: v.$level_one_zindex;
-  transition: position 1050ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
   .burger-menu__label {
     padding: 1.5rem 0;

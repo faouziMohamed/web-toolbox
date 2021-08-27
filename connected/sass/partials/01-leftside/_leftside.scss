@@ -5,13 +5,24 @@
   overflow: hidden;
   height: 100%;
 }
+
+.left-side-parent {
+  $color: rgba(darken(v.$primary_color, 30%), 40%);
+  display: block;
+  @include useSquareSize(100%);
+  @include usePosition(absolute, 0, 0);
+  transform: translate(0);
+  background-color: $color;
+  z-index: v.$level_one_zindex;
+  transition: transform 250ms ease;
+}
+
 .left-side {
-  $left-side-width: 280px;
   @extend %left-side-common;
   background-color: #f4fdff;
   padding-block: 0.2rem;
-  flex: 0 0 $left-side-width;
-  width: $left-side-width;
+  flex: 0 0 v.$left-side-width;
+  width: v.$left-side-width;
   border-inline-end: 1px solid v.$light_gray;
   transition: transform 0.5s cubic-bezier(1, 0.68, 0, 1.1) 50ms;
   @include usePosition(absolute, 0, 0, $bottom: 0);
@@ -19,14 +30,6 @@
 
   &__closed {
     transform: translate(-100%);
-  }
-
-  &:not(&__closed) &__clickToClose {
-    $color: rgba(darken(v.$primary_color, 30%), 40%);
-    display: block;
-    @include useSquareSize(100%);
-    @include usePosition(fixed, 0, $left-side-width - 1);
-    background-color: $color;
   }
 
   &__header {
@@ -51,7 +54,7 @@
   &__user-profil-link {
     font-size: 0.988rem;
     border-radius: 0.5rem;
-    background-color: #{v.$primary_color}12;
+    background-color: rgba(0, 38, 165, 0.071);
     color: rgb(43, 43, 43);
     display: flex;
     align-items: center;
@@ -63,7 +66,7 @@
     @include useSquareSize(2.5rem);
   }
   &__userprofil-pic {
-    background-color: #{v.$primary_color}33;
+    background-color: rgba(0, 38, 165, 0.2);
     border-radius: 50%;
     @include useSquareSize(100%);
     object-fit: scale-down;
@@ -107,5 +110,28 @@
     width: 0.23rem;
     border-top-left-radius: 0.255rem;
     border-bottom-left-radius: 0.255rem;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  %common-props {
+    position: relative;
+  }
+  .left-side-parent.left-side-parent {
+    @extend %common-props;
+    display: block;
+    width: v.$left-side-width;
+    background-color: transparent;
+  }
+  .left-side {
+    @extend %common-props;
+    transform: translate(0);
+    z-index: v.$level_one_zindex;
+  }
+
+  .burger-menu {
+    @extend %common-props;
+    width: 0;
+    transform: translateY(-1000%);
   }
 }
