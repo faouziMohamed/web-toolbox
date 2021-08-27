@@ -18,6 +18,10 @@ jobs:
           sass connected/sass/:connected/styles/
           # Append /web-toolbox in every local url in the html files 
           sed -i 's#="/\(.\+\)"#="/web-toolbox/\1"#g' connected/*.html
+
+          # Replace ${API_URL} by /web-toolbox in every js file 
+          # in the connected/js directory 
+          sed 's#${API_URL}#/web-toolbox#g' connected/js/*.js
       - name: deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
