@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  compile and run:
+  compile_and_run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
