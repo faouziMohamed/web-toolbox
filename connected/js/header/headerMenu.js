@@ -12,10 +12,7 @@ export const useHeaderMenu = () => {
 };
 
 function addEventHandlers(input, leftSideParent, toggle) {
-  input.addEventListener('change', () => {
-    leftSideParent.classList.toggle('hidden');
-    toggle();
-  });
+  input.addEventListener('change', toggle);
   leftSideParent.addEventListener('click', closeLeftSide(input, toggle));
 }
 
@@ -23,13 +20,13 @@ function closeLeftSide(input, toggle) {
   return function (e) {
     const { classList } = e.target;
     if (!classList.contains('left-side-parent')) return;
-    this.classList.add('hidden');
     input.checked = false;
     toggle();
   };
 }
 
 function toggleStates(leftSide, contentRoot, burgerMenu) {
+  leftSide.parentNode.classList.toggle('on-top');
   leftSide.classList.toggle('left-side__closed');
   contentRoot.classList.toggle(['prevent-scroll'], ['blur']);
   burgerMenu.classList.toggle('left-side__oppened');

@@ -8,3 +8,6 @@ export function newElement(name, attributes = {}, childs = []) {
   node.append(...childs);
   return node;
 }
+
+export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+export const capitalizeAll = (str) => str.replace(/\w\S*/g, capitalize);

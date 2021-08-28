@@ -1,3 +1,5 @@
+import { capitalize } from '../utils/dom-utils.js';
+
 function handleOpenCloseDropDown(clickClassName, dropDownClassName) {
   const dropDown = document.querySelector(`.${dropDownClassName}`);
   if (!dropDown) return;
@@ -22,19 +24,49 @@ function handleClosingDropDown(clickClassName, dropDownClassName) {
 }
 
 function useLangDropDown() {
-  const dropDown = document.querySelector('.lang-drop-down');
-  const changeLange = (e) => {
-    const { lang } = e.target.dataset;
-    if (lang) localStorage.setItem('lang', lang);
-    dropDown.classList.add('hidden');
+  const langMap = {
+    en: 'english',
+    fr: 'french',
   };
-  if (!localStorage.getItem('lang')) localStorage.setItem('lang', 'en');
+  const langDropDown = document.querySelector('.lang-drop-down');
+  initialiseLangDropDown(langMap);
+  const handler = changeLang(langDropDown, langMap);
+  handleLangChanging(handler);
+}
 
+function initialiseLangDropDown(langMap) {
+  if (!localStorage.getItem('lang')) {
+    localStorage.setItem('lang', 'en');
+    updateImgSource(langMap.en);
+  } else {
+    updateImgSource(langMap[localStorage.getItem('lang')]);
+  }
+}
+
+function handleLangChanging(handler) {
   const elements = document.querySelectorAll('.lang-item');
   if (!elements.length) return;
   elements.forEach((node) => {
-    node.addEventListener('click', changeLange);
+    node.addEventListener('click', handler);
   });
+}
+
+function changeLang(dropDown, langMap) {
+  return (e) => {
+    const { lang } = e.target.dataset;
+    if (lang) localStorage.setItem('lang', lang);
+    dropDown.classList.add('hidden');
+    updateImgSource(langMap[lang]);
+  };
+}
+
+function updateImgSource(lang) {
+  const langImg = document.querySelector('.lang-flag');
+  // This regex match a url ending with a string.svg (english.svg or french.svg)
+  const findLangRegex = /(^.*\/)\w+(.svg)$/g;
+  const imgSrc = langImg.src.replace(findLangRegex, `$1${lang}$2`);
+  langImg.src = imgSrc;
+  langImg.alt = capitalize(lang);
 }
 
 export function useDropDown(clickClassName, dropDownClassName) {

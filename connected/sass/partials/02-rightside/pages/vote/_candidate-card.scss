@@ -1,5 +1,5 @@
-@use '../variables' as v;
-@use '../mixins/global-mixin' as *;
+@use '../../../mixins/global-mixin' as *;
+@use '../../../variables' as v;
 
 .candidate-cards-wrapper {
   @include useFlexbox();
@@ -10,9 +10,6 @@
 
 %radius-6rem {
   border-radius: 0.6rem;
-}
-%no-bg {
-  background-color: transparent;
 }
 
 %full-size {
@@ -49,14 +46,14 @@
     z-index: 11;
   }
 
+  @include useInfoIndicator;
+
   &:is(:hover, :focus) {
     box-shadow: 0 0 0.2rem 0.05rem v.$primary_color;
     .candidate-card__more-details {
       display: flex;
     }
-    & .info-indicator {
-      color: #111111;
-    }
+    @include useHovered-info-indicator();
   }
 }
 
@@ -78,20 +75,6 @@
   }
 }
 
-.info-indicator-wrapper {
-  @include useFlexbox($jt: flex-end, $al: flex-start);
-  @include usePosition(absolute, $top: 0, $right: 0);
-  @extend %no-bg;
-  z-index: 10;
-
-  .info-indicator {
-    @include usePosition(relative, $top: 0.3rem, $right: 0.3rem);
-    @extend %no-bg;
-    color: #464646b1;
-    border: none;
-    font-size: 1.2rem;
-  }
-}
 .candidate-figure {
   &__top-details {
     width: 13.875rem;

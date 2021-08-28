@@ -1,5 +1,6 @@
-@use '../variables' as v;
-@use '../mixins/global-mixin' as *;
+@use '../../../mixins/global-mixin' as *;
+@use '../../../variables' as v;
+
 %border-radius-base {
   border-radius: 0.5rem;
 }
@@ -10,7 +11,7 @@
   @include useFlexbox(column);
   @include usePosition(absolute, 0, 0);
   @include useSquareSize(100%);
-  z-index: v.$modal_zindex;
+  z-index: v.$zindex_modal_level_one;
   transition: background-color 0.01s ease;
   background-color: rgba(darken(v.$primary_color, 5%), 0.39);
 }

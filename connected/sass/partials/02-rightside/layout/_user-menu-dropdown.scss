@@ -1,5 +1,5 @@
-@use '../mixins/global-mixin' as *;
-@use './../variables' as v;
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
 
 %useCircularRadius {
   border-radius: 50%;
@@ -11,7 +11,7 @@
 }
 
 %useZindexLevelOne {
-  z-index: v.$level_one_zindex;
+  z-index: v.$zindex_level_one;
 }
 %useCenteredText {
   text-align: center;

@@ -1,16 +1,4 @@
-import { newElement } from './utils/dom-utils.js';
-
-export const fetchAllCandidateDetails = async () => {
-  const API_URL = '';
-  const response = await fetch(`${API_URL}/candidate/details/data.json`);
-  const data = await response.json();
-  return data;
-};
-
-export const getCandidateData = async (candidateID) => {
-  const { data } = await fetchAllCandidateDetails();
-  return data[candidateID];
-};
+import { newElement } from '../utils/dom-utils.js';
 
 const defaultArg = {
   id: -1,
@@ -31,6 +19,20 @@ export class CandidateCard {
     this.candidateCard = null;
     this.skills = '';
     this.picturePath = '';
+
+    this.metadataLabels = {
+      en: {
+        voteNow: 'Vote now',
+        moreDetails: 'More details...',
+        seeMoreAbout: 'Click to see more about',
+      },
+      fr: {
+        voteNow: 'Voter maintenant',
+        moreDetails: 'Plus de détails...',
+        seeMoreAbout: "Cliquez pour voir plus d'informations sur",
+      },
+    };
+
     try {
       this.createCandidateCard();
     } catch (error) {
@@ -49,19 +51,26 @@ export class CandidateCard {
     return this.picturePath;
   }
 
-  getName() {
+  getDataName() {
     return this.data.name;
   }
-  getSkillsData() {
+  getDataSkills() {
     return this.skills;
   }
 
-  getId() {
+  getDataId() {
     return this.candidateID;
   }
 
-  getBioData() {
+  getDataBio() {
     return this.data.description[this.lang].details;
+  }
+  getDataDepositionDate() {
+    return this.data.description.depositionDate;
+  }
+
+  getDataPosition() {
+    return this.data.description.position;
   }
 
   getMoreDetailsButton() {
@@ -98,21 +107,22 @@ export class CandidateCard {
     );
   }
   createVoteButton() {
+    const voteText = this.metadataLabels[this.lang].voteNow;
     this.voteButton = newElement(
       'button',
       { class: 'btn vote-btn btn-primary', title: 'Click to vote' },
-      ['Vote now'],
+      [voteText],
     );
   }
 
   createImageWrapper() {
     this.createProfilPicture();
     this.createMoreDetailsButtonWrapper();
-    this.createMoreInfoButton();
+    this.createInfoIndicator();
     this.imageWrapper = newElement(
       'div',
       { class: 'candidate-figure__top-details' },
-      [this.profilPicture, this.moreDetailsWrapper, this.moreInfoBtnWrapper],
+      [this.profilPicture, this.moreDetailsWrapper, this.infoIndicatorWrapper],
     );
   }
 
@@ -135,12 +145,12 @@ export class CandidateCard {
   }
 
   createCandidateDetails() {
-    const { skills: skillsArray } = this.data.description[this.lang];
-    this.skills = skillsArray.join(' | ');
+    this.skills = this.data.description[this.lang].skills;
+    const skills = this.skills.join(' | ');
     this.candidateDetails = newElement(
       'small',
       { class: 'candidate-description__skills' },
-      [this.skills],
+      [skills],
     );
   }
 
@@ -163,28 +173,30 @@ export class CandidateCard {
   }
 
   createMoreDetailsButton() {
+    const moreDetailsText = this.metadataLabels[this.lang].moreDetails;
+    const altText = this.metadataLabels[this.lang].seeMoreAbout;
     this.moreDetailsButton = newElement(
       'button',
       {
         class: 'btn more-details-btn',
-        title: `Click to see more about ${this.data.name}`,
+        title: `${altText} ${this.data.name}`,
         'data-id': this.candidateID,
       },
-      ['More details...'],
+      [moreDetailsText],
     );
   }
 
-  createMoreInfoButton() {
-    this.moreInfoButton = newElement(
-      'button',
-      { class: 'info-indicator', title: 'Click to see more info' },
+  createInfoIndicator() {
+    this.infoIndicator = newElement(
+      'div',
+      { class: 'info-indicator', tabindex: -1 },
       [newElement('i', { class: 'fas fa-info-circle' })],
     );
 
-    this.moreInfoBtnWrapper = newElement(
+    this.infoIndicatorWrapper = newElement(
       'div',
       { class: 'info-indicator-wrapper' },
-      [this.moreInfoButton],
+      [this.infoIndicator],
     );
   }
 }
@@ -208,7 +220,7 @@ export class CandidateCard {
         </button>
       </div>
       <div class="info-indicator-wrapper">
-        <button class="info-indicator">
+        <button class="info-indicator" tabindex="-1">
           <i class="fas fa-info-circle"></i>
         </button>
       </div>

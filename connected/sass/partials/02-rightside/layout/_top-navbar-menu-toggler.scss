@@ -1,5 +1,5 @@
-@use './../variables' as v;
-@use '../mixins/global-mixin' as *;
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
 
 $burger-primary-color: #001044;
 @mixin use-TranslateY-rotate($sign: '') {
@@ -67,9 +67,10 @@ $burger-primary-color: #001044;
 
 .left-side__oppened {
   transform: translateX(v.$left_side_width - 4.5);
-  z-index: v.$level_one_zindex;
+  z-index: v.$zindex_level_one;
 
   .burger-menu__label {
     padding: 1.5rem 0;
+    z-index: v.$zindex_level_one;
   }
 }

@@ -1,4 +1,4 @@
-import { newElement } from './utils/dom-utils.js';
+import { newElement } from '../utils/dom-utils.js';
 
 export class CandidateModal {
   constructor(candidate) {
@@ -56,7 +56,7 @@ export class CandidateModal {
     this.candidateProfilePicture = newElement('img', {
       class: 'candidate-modal-profile__picture',
       src: this.candidate.getPicturePath(),
-      alt: `${this.candidate.getName()}'s profile picture`,
+      alt: `${this.candidate.getDataName()}'s profile picture`,
       width: '200',
       tabindex: 0,
     });
@@ -80,7 +80,7 @@ export class CandidateModal {
         id: 'candidate-full-details__bio',
         tabindex: 0,
       },
-      [this.candidate.getBioData()],
+      [this.candidate.getDataBio()],
     );
   }
 
@@ -101,17 +101,16 @@ export class CandidateModal {
         class: 'candidate-full-details__name',
         id: 'candidate-full-details__name',
       },
-      [this.candidate.getName()],
+      [this.candidate.getDataName()],
     );
   }
 
   createSkillsBlock() {
+    const skills = this.candidate.getDataSkills().join(' | ');
     this.skillsBlock = newElement(
       'h3',
-      {
-        class: 'candidate-full-details__skills',
-      },
-      [this.candidate.getSkillsData()],
+      { class: 'candidate-full-details__skills' },
+      [skills],
     );
   }
 }

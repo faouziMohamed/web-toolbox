@@ -59,24 +59,30 @@
   border-radius: $radius;
 }
 
-// @mixin theme($primary-color, $rotate: 120deg, $darkenpct: 20%) {
-//   .btn-primary {
-//     @include button-base($primary-color);
-//   }
-//   .btn-secondary {
-//     @include button-base(
-//       darken(adjust-hue($primary-color, $rotate), $darkenpct)
-//     );
-//   }
-//   .btn-more-details {
-//     @include button-base(
-//       darken(adjust-hue($primary-color, 360deg - $rotate), $darkenpct)
-//     );
-//   }
+%no-bg {
+  background-color: transparent;
+}
 
-//   .btn-other2 {
-//     @include button-base(
-//       darken(adjust-hue($primary-color, 180deg), $darkenpct)
-//     );
-//   }
-// }
+@mixin useInfoIndicator() {
+  .info-indicator-wrapper {
+    @include useFlexbox($jt: flex-end, $al: flex-start);
+    @include usePosition(absolute, $top: 0, $right: 0);
+    @extend %no-bg;
+    z-index: 10;
+
+    .info-indicator {
+      @include usePosition(relative, $top: 0.3rem, $right: 0.3rem);
+      @extend %no-bg;
+      color: #464646b1;
+      border: none;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@mixin useHovered-info-indicator() {
+  .info-indicator {
+    color: #111111;
+    @content;
+  }
+}

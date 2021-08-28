@@ -1,18 +1,13 @@
-@use '../variables' as v;
-@use '../mixins/global-mixin' as *;
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
+
 %padding-0_5rem {
   padding: 0.5rem;
 }
-.main-page {
-  @include useFlexbox(column, $jt: 0, $al: 0);
-  flex: 1 1 auto;
-  background-color: #fffdfd;
-  overflow: hidden;
 
-  &__navbar {
-    @include useFlexbox(0, space-between);
-    background-color: #{v.$primary_color}05;
-  }
+.main-page__navbar {
+  @include useFlexbox(0, space-between);
+  background-color: #{v.$primary_color}05;
 }
 
 .top-navbar {
@@ -63,7 +58,7 @@
 .lang-drop-down {
   @include usePosition(absolute, calc(100% + 0.7rem), -0.3rem, 0, 0);
   width: 8rem;
-  z-index: v.$level_one_zindex;
+  z-index: v.$zindex_level_one;
   background-color: rgba(v.$primary_color, 0.53);
 }
 
@@ -95,9 +90,4 @@
 
 .lang-text {
   align-self: center;
-}
-
-.main-content-root {
-  overflow: auto;
-  @include useSquareSize(100%);
 }

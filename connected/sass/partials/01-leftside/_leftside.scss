@@ -13,8 +13,11 @@
   @include usePosition(absolute, 0, 0);
   transform: translate(0);
   background-color: $color;
-  z-index: v.$level_one_zindex;
   transition: transform 250ms ease;
+  z-index: -1;
+  &.on-top {
+    z-index: v.$zindex_level_one;
+  }
 }
 
 .left-side {
@@ -26,7 +29,7 @@
   border-inline-end: 1px solid v.$light_gray;
   transition: transform 0.5s cubic-bezier(1, 0.68, 0, 1.1) 50ms;
   @include usePosition(absolute, 0, 0, $bottom: 0);
-  z-index: v.$level_one_zindex;
+  z-index: v.$zindex_level_one;
 
   &__closed {
     transform: translate(-100%);
@@ -103,13 +106,14 @@
   }
 
   &__active-tab::after {
+    $radius: 0.255rem;
     display: block;
     @include usePosition(absolute, $top: 0, $right: 0, $bottom: 0);
     content: '';
     background-color: v.$primary_color;
     width: 0.23rem;
-    border-top-left-radius: 0.255rem;
-    border-bottom-left-radius: 0.255rem;
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
   }
 }
 
@@ -117,16 +121,19 @@
   %common-props {
     position: relative;
   }
-  .left-side-parent.left-side-parent {
+
+  .left-side-parent {
     @extend %common-props;
     display: block;
     width: v.$left-side-width;
     background-color: transparent;
+    z-index: v.$zindex_level_one;
   }
+
   .left-side {
     @extend %common-props;
     transform: translate(0);
-    z-index: v.$level_one_zindex;
+    z-index: v.$zindex_level_one;
   }
 
   .burger-menu {
