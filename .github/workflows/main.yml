@@ -29,12 +29,8 @@ jobs:
           echo -e "\nRunning sed on js..."
           # Replace ${API_URL} by /web-toolbox in every js file 
           # in the connected/js directory 
-          for i in `ls connected/js/**/*.js`;
-          do  
-            sed -i 's#${API_URL}#/web-toolbox#g' $i; 
-            sed -i 's#${ROOT}#/web-toolbox#g' $i; 
-            echo "JS - $i..."
-          done
+          sed -i 's#${API_URL}#/web-toolbox#g' connected/js/*.js js/candidates/utils/*.js; 
+          sed -i 's#${ROOT}#/web-toolbox#g' connected/js/*.js js/candidates/utils/*.js; 
           echo -e "Running sed on Js Done!\n"          
           
           
