@@ -17,7 +17,7 @@ jobs:
           npm install -g sass
           sass connected/sass/:connected/styles/
           # Append /web-toolbox in every local url in the html files 
-          sed -i 's#="/\(.\+\)"#="/web-toolbox/\1"#g' connected/**/*.html
+          sed -i 's#="/\(.\+\)"#="/web-toolbox/\1"#g' connected/*.html
 
           # Replace ${API_URL} by /web-toolbox in every js file 
           # in the connected/js directory 
