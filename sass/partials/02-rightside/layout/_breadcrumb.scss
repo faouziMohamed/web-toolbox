@@ -1,0 +1,21 @@
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
+
+.breadcrumb {
+  @include useFlexbox($jt: 0, $dir: 0);
+  padding: 0.5rem 0.3rem;
+  background-color: rgba(v.$primary_color, 0.05);
+  font-family: v.$secondary_font;
+  font-weight: 600;
+  font-size: 0.888rem;
+  color: #344;
+
+  &__path {
+    display: flex;
+    &:not(.active)::after {
+      @include useFlexbox($dir: 0);
+      content: '>';
+      padding-inline: 0.5rem;
+    }
+  }
+}

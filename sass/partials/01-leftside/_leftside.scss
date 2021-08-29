@@ -1,0 +1,144 @@
+@use '../variables' as v;
+@use '../mixins/global-mixin' as *;
+
+%left-side-common {
+  overflow: hidden;
+  height: 100%;
+}
+
+.left-side-parent {
+  $color: rgba(darken(v.$primary_color, 30%), 40%);
+  display: block;
+  @include useSquareSize(100%);
+  @include usePosition(absolute, 0, 0);
+  transform: translate(0);
+  background-color: $color;
+  transition: transform 250ms ease;
+  z-index: -1;
+  &.on-top {
+    z-index: v.$zindex_level_one;
+  }
+}
+
+.left-side {
+  @extend %left-side-common;
+  background-color: #f4fdff;
+  padding-block: 0.2rem;
+  flex: 0 0 v.$left-side-width;
+  width: v.$left-side-width;
+  border-inline-end: 1px solid v.$light_gray;
+  transition: transform 0.5s cubic-bezier(1, 0.68, 0, 1.1) 50ms;
+  @include usePosition(absolute, 0, 0, $bottom: 0);
+  z-index: v.$zindex_level_one;
+
+  &__closed {
+    transform: translate(-100%);
+  }
+
+  &__header {
+    position: relative;
+    @extend %left-side-common;
+  }
+
+  &__site-logo-link,
+  &__title,
+  &__site-nav-link {
+    padding-inline: 1.5rem;
+  }
+  &__username-wrap,
+  &__site-logo-link {
+    padding-block: 1.5rem;
+  }
+  &__site-logo-link {
+    position: relative;
+    display: inline-flex;
+    padding-block-end: 0;
+  }
+  &__user-profil-link {
+    font-size: 0.988rem;
+    border-radius: 0.5rem;
+    background-color: rgba(0, 38, 165, 0.071);
+    color: rgb(43, 43, 43);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 5px;
+    padding: 0.99rem;
+  }
+  &__img-profil-wrapper {
+    @include useSquareSize(2.5rem);
+  }
+  &__userprofil-pic {
+    background-color: rgba(0, 38, 165, 0.2);
+    border-radius: 50%;
+    @include useSquareSize(100%);
+    object-fit: scale-down;
+  }
+}
+
+.site-nav {
+  &__list {
+    list-style-type: none;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    padding: 0.3rem 3rem;
+    padding-block: 0.8rem;
+    color: rgb(75, 75, 75);
+    position: relative;
+    text-decoration: none;
+    font-weight: 600;
+    gap: 1rem;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    height: 3rem;
+  }
+
+  &__link:hover {
+    background-color: rgba(v.$primary_color, 0.1);
+  }
+
+  &__active-tab {
+    color: v.$primary_color;
+    border-color: transparent;
+    background-color: rgba(v.$primary_color, 0.15);
+  }
+
+  &__active-tab::after {
+    $radius: 0.255rem;
+    display: block;
+    @include usePosition(absolute, $top: 0, $right: 0, $bottom: 0);
+    content: '';
+    background-color: v.$primary_color;
+    width: 0.23rem;
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+  }
+}
+
+@media screen and (min-width: 780px) {
+  %common-props {
+    position: relative;
+  }
+
+  .left-side-parent {
+    @extend %common-props;
+    display: block;
+    width: v.$left-side-width;
+    background-color: transparent;
+    z-index: v.$zindex_level_one;
+  }
+
+  .left-side {
+    @extend %common-props;
+    transform: translate(0);
+    z-index: v.$zindex_level_one;
+  }
+
+  .burger-menu {
+    @extend %common-props;
+    width: 0;
+    transform: translateY(-1000%);
+  }
+}

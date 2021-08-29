@@ -1,0 +1,76 @@
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
+
+$burger-primary-color: #001044;
+@mixin use-TranslateY-rotate($sign: '') {
+  $y: 0.1rem;
+  $rotate: 495deg;
+  transform: translateY(#{$sign}#{$y}) rotate(#{$sign}#{$rotate});
+}
+
+.burger-menu {
+  @include useFlexbox(0, flex-start);
+  transform: translateX(0);
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.burger-menu__label {
+  position: relative;
+  display: block;
+  width: 3em;
+  padding-left: 0.3em;
+  cursor: pointer;
+
+  &::before,
+  &::after {
+    display: block;
+    height: 4px;
+    background-color: v.$primary_color;
+    transition: transform 0.5s ease-in-out;
+    content: '';
+  }
+
+  &::before {
+    box-shadow: 0 10px 0 $burger-primary-color;
+  }
+
+  &:hover::before,
+  &:hover::after,
+  &:focus::before,
+  &:focus::after {
+    background-color: $burger-primary-color;
+  }
+
+  &:hover::before {
+    box-shadow: 0 10px 0 v.$primary_color;
+  }
+}
+
+.burger-menu__checkbox {
+  @include usePosition(absolute, 15%, 15%);
+  z-index: -1;
+  opacity: 0;
+
+  &:not(:checked) + .burger-menu__label::before {
+    margin-bottom: 1em;
+  }
+
+  &:checked + .burger-menu__label::before {
+    box-shadow: none;
+    @include use-TranslateY-rotate();
+  }
+
+  &:checked + .burger-menu__label::after {
+    @include use-TranslateY-rotate($sign: '-');
+  }
+}
+
+.left-side__oppened {
+  transform: translateX(v.$left_side_width - 4.5);
+  z-index: v.$zindex_level_one;
+
+  .burger-menu__label {
+    padding: 1.5rem 0;
+    z-index: v.$zindex_level_one;
+  }
+}

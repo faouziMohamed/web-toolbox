@@ -1,0 +1,80 @@
+@use '../../../mixins/global-mixin' as *;
+@use '../../../variables' as v;
+
+%border-radius-base {
+  border-radius: 0.5rem;
+}
+%padding-1rem {
+  padding: 1rem;
+}
+.candidate-modal-container {
+  @include useFlexbox(column);
+  @include usePosition(absolute, 0, 0);
+  @include useSquareSize(100%);
+  z-index: v.$zindex_modal_level_one;
+  transition: background-color 0.01s ease;
+  background-color: rgba(darken(v.$primary_color, 5%), 0.39);
+}
+
+.candidate-modal {
+  @extend %padding-1rem;
+  @extend %border-radius-base;
+  @include useFlexbox(column, $jt: 0, $inline: 1);
+  position: relative;
+  gap: 1rem;
+  width: 90%;
+  background-color: #e8fcff;
+  color: #121313;
+  overflow: auto;
+
+  &__close-btn {
+    @extend %padding-1rem;
+    @include usePosition(absolute, 0.1rem, $right: 0.1rem);
+    @include useFlexbox(0, $inline: 1);
+    @include useSquareSize(1.8rem);
+    box-shadow: 0 0 0.3rem 0.01rem rgba(v.$primary_color, 0.3);
+
+    border: none;
+    font-size: 1.3rem;
+    border-radius: 50%;
+    background-color: #a9c7ffdb;
+    color: rgb(33, 33, 33);
+    &:hover {
+      color: rgb(255, 255, 255);
+      background-color: #00a573;
+    }
+  }
+}
+
+.candidate-modal-profile {
+  max-width: 20rem;
+  max-height: 25rem;
+  &__picture {
+    @extend %border-radius-base;
+    box-shadow: 0 0 0.26rem 0.01rem rgba(v.$primary_color, 0.7);
+    @include useSquareSize(100%);
+    object-fit: cover;
+  }
+}
+
+.candidate-full-details {
+  @include useFlexbox(column, 0, 0);
+  @extend %border-radius-base;
+  box-shadow: 0 0 0.26rem 0.01rem rgba(v.$primary_color, 0.3);
+  padding: 0.5rem;
+  gap: 0.6rem;
+  text-align: center;
+  background-color: rgba(v.$primary_color, 0.15);
+  line-height: 1.3rem;
+  &__name {
+    font-size: 1.5rem;
+  }
+
+  &__skills {
+    font-size: 0.729rem;
+    color: #272830f5;
+  }
+  &__bio {
+    text-align: justify;
+  }
+}

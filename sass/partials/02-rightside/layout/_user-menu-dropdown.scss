@@ -1,0 +1,121 @@
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
+
+%useCircularRadius {
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+%useRadius-0_6rem {
+  border-radius: 0.6rem;
+}
+
+%useZindexLevelOne {
+  z-index: v.$zindex_level_one;
+}
+%useCenteredText {
+  text-align: center;
+}
+
+.user-profil-thumb {
+  @extend %useCircularRadius;
+  @include useSquareSize(100%);
+  border: 1px solid #b5c2c2;
+}
+
+%card-background {
+  background-color: lighten(v.$primary_color, 65%);
+}
+
+.user-menu-card {
+  @extend %useRadius-0_6rem;
+  @extend %useZindexLevelOne;
+  @include usePosition(absolute, $right: 0, $top: calc(100% + 0.6rem));
+  display: flex;
+  flex-direction: column;
+  width: 10rem;
+  cursor: auto;
+  min-width: 5rem;
+  border: 1px solid rgba(14, 14, 14, 0.438);
+  @extend %card-background;
+
+  color: rgb(12, 12, 12);
+  box-shadow: 0 0 5px #223344;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.user {
+  &-figure {
+    @include useFlexbox(column);
+    @extend %useZindexLevelOne;
+  }
+
+  &-picture {
+    @include useFlexbox($dir: 0);
+    @include useSquareSize(7.6rem);
+    flex: 1;
+    padding-block: 0.4rem;
+
+    &-img {
+      @extend %useCircularRadius;
+      display: block;
+      @include useSquareSize(100%);
+      background-color: transparent;
+    }
+  }
+
+  &-name {
+    @extend %useCenteredText;
+    display: block;
+    padding-block-start: 0.5rem;
+    padding-inline: 0.2rem;
+    background-color: rgba(darken(v.$primary_color, 15%), 0.2);
+    font-weight: bold;
+    width: 100%;
+    border-block-end: 3px solid rgba(darken(v.$primary_color, 10%), 0.6);
+  }
+}
+
+.action {
+  &-wrapper {
+    @include useFlexbox(column, $jt: 0, $al: flex-start);
+    width: 100%;
+    list-style-type: none;
+    border-radius: 0 0 0.65rem 0.65rem;
+    padding-block-start: 0.5rem;
+  }
+  &-item {
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.26em 0.5rem;
+      @extend %card-background;
+      text-decoration: none;
+      text-align: start;
+      color: #000b33;
+      &:hover {
+        background-color: #d0dafff8;
+      }
+    }
+  }
+
+  &-logout {
+    @extend %useCenteredText;
+    @extend %useRadius-0_6rem;
+    width: 90%;
+    margin-block: 0.4rem 0.5rem;
+    border: 1px solid #3f4d5e;
+    align-self: center;
+    justify-content: center;
+    &:hover {
+      background-color: #faffbf;
+    }
+  }
+}
