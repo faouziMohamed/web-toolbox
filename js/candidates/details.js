@@ -59,7 +59,7 @@ export class CandidateDetails {
   }
 
   getPicturePath(ROOT = '') {
-    return `${ROOT}/images/candidates/${this.data.id}`;
+    return `/web-toolbox/images/candidates/${this.data.id}`;
   }
 
   getDataBio() {
@@ -119,7 +119,7 @@ export class CandidateDetails {
   createImg(ROOT = '') {
     this.candidatePicture = newElement('img', {
       class: 'candidate-picture__img',
-      src: `${ROOT}/images/candidates/${this.data.id}`,
+      src: `/web-toolbox/images/candidates/${this.data.id}`,
       alt: `${this.data.name}'s picture`,
       width: '100',
     });
