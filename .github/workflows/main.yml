@@ -17,9 +17,9 @@ jobs:
           npm install -g sass
           sass connected/sass/:connected/styles/
           # Append /web-toolbox in every local url in the html files 
-          sed -i 's#="/\(.\+\)"#="/web-toolbox/\1"#g' connected/*.html
+          # sed -i 's#="/\(.\+\)"#="/web-toolbox/\1"#g' connected/*.html
           echo "Running sed on html..."
-          for i in `ls ./connected/**/*.html`;
+          for i in `ls ./connected/*.html`;
           do  
             sed -i 's#="/\(.\+\)"#="/web-toolbox/\1"#g' $i; 
             echo "HTML - $i"
