@@ -155,7 +155,7 @@ export class CandidateCard {
   }
 
   createProfilPicture(ROOT = '') {
-    this.picturePath = `/web-toolbox/images/candidates/${this.candidateID}`;
+    this.picturePath = `${ROOT}/images/candidates/${this.candidateID}`;
     this.profilPicture = newElement('img', {
       class: 'candidate-figure__picture',
       src: this.picturePath,

@@ -1,6 +1,6 @@
 export const fetchAllCandidateDetails = async () => {
   const API_URL = '';
-  const response = await fetch(`${API_URL}/candidate/details/data.json`);
+  const response = await fetch(`/web-toolbox/candidate/details/data.json`);
   const data = await response.json();
   return data;
 };
