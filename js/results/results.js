@@ -4,7 +4,7 @@ export async function readResultsData(formater = defaultFormatter) {
 }
 
 export async function getResultsData(ROOT = '') {
-  const response = await fetch(`${ROOT}/api/votes/results/results.json`);
+  const response = await fetch(`/web-toolbox/api/votes/results/results.json`);
   const { data } = await response.json();
   return data;
 }
