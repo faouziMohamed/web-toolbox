@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Candidates | Evote app</title>
+    <title>Vote results | Evote app</title>
     <link
       rel="shortcut icon"
       href="/images/logo/favicon-32x32.png"
@@ -34,6 +34,27 @@
       href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/apexcharts"
+      as="script"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts" async defer></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins');
+
+      * {
+        font-family: 'Poppins', sans-serif;
+      }
+
+      #chart {
+        max-width: 760px;
+        margin: 35px auto;
+        opacity: 0.9;
+      }
+    </style>
   </head>
   <body>
     <div class="root">
@@ -72,16 +93,16 @@
                   </a>
                 </li>
                 <li class="site-nav__item">
-                  <a
-                    href="/candidates.html"
-                    class="site-nav__link site-nav__active-tab"
-                  >
+                  <a href="/candidates.html" class="site-nav__link">
                     <i class="left-nav-icon fas fa-id-card"> </i>
                     <span class="nav-text">Candidates</span>
                   </a>
                 </li>
                 <li class="site-nav__item">
-                  <a href="/results.html" class="site-nav__link">
+                  <a
+                    href="/results.html"
+                    class="site-nav__link site-nav__active-tab"
+                  >
                     <i class="left-nav-icon fas fa-chart-bar"> </i>
                     <span class="nav-text">Results</span>
                   </a>
@@ -223,22 +244,36 @@
               aria-hidden="true"
               id="candidate-modal-container"
             ></div>
-            <ul class="list-candidates has-loader">
-              <li>
-                <div class="loading-container">
-                  <ul class="bubble-container">
-                    <li class="bubble-item"></li>
-                    <li class="bubble-item"></li>
-                    <li class="bubble-item"></li>
-                    <li class="bubble-item"></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
+            <div class="chart-btn-tab-wrapper">
+              <div class="btn-tab-container">
+                <button
+                  data-chart="donut"
+                  class="btn-tab btn-tab__tab1 btn btn-primary active-tab"
+                >
+                  Tab 1
+                </button>
+                <button
+                  data-chart="bar"
+                  class="btn-tab btn-tab__tab2 btn btn-primary"
+                >
+                  Tab 2
+                </button>
+                <button
+                  data-chart="bar"
+                  class="btn-tab btn-tab__tab3 btn btn-primary"
+                >
+                  Tab 3
+                </button>
+              </div>
+              <div class="chart-tab-container">
+                <div id="chart" class="chart"></div>
+              </div>
+            </div>
           </div>
         </main>
       </div>
     </div>
-    <script src="/js/main.js" type="module" async></script>
+    <script src="/js/main.js" type="module" async defer></script>
+    <script type="module" src="/js/results/charts.js"></script>
   </body>
 </html>
