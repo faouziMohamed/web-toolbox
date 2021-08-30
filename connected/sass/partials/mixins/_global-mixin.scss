@@ -1,3 +1,4 @@
+@use '../variables' as v;
 @mixin useFlexbox($dir: row, $jt: center, $al: center, $inline: 0) {
   @if $inline==0 {
     display: flex;
@@ -61,6 +62,21 @@
 
 %no-bg {
   background-color: transparent;
+}
+
+%useScrollbarStyle {
+  scroll-behavior: smooth;
+  scrollbar-color: lighten(v.$primary_color, 15%) lighten(v.$primary_color, 55%);
+
+  :is(&, & *)::-webkit-scrollbar {
+    width: 5px;
+    background-color: lighten(v.$primary_color, 51%);
+    border: 1px solid lighten(v.$primary_color, 47%);
+  }
+
+  :is(&, & *)::-webkit-scrollbar-thumb {
+    background: darken(v.$primary_color, 11%);
+  }
 }
 
 @mixin useInfoIndicator() {

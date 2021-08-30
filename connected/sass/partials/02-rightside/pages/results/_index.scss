@@ -1,0 +1,35 @@
+@use '../../../variables' as v;
+@use '../../../mixins/global-mixin' as *;
+
+.chart-btn-tab-wrapper {
+  @include useFlexbox(column, $jt: 0);
+  width: 50%;
+  background-color: rgb(246, 251, 255);
+  border-radius: 5px;
+  max-width: 39.4375rem;
+  max-height: 26rem;
+}
+
+.btn-tab-container {
+  @include useFlexbox(row);
+  gap: 1px;
+  flex: 1;
+  width: 70%;
+}
+
+.btn-tab {
+  $btn-radius: 5px;
+  flex: 1 0;
+  padding: 0.9rem 1rem;
+  border-radius: 0;
+  border: none;
+  font-size: 0.89rem;
+  &:first-child {
+    border-top-left-radius: $btn-radius;
+    border-bottom-left-radius: $btn-radius;
+  }
+  &:last-child {
+    border-top-right-radius: $btn-radius;
+    border-bottom-right-radius: $btn-radius;
+  }
+}

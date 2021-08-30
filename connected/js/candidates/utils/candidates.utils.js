@@ -1,6 +1,5 @@
-export const fetchAllCandidateDetails = async () => {
-  const API_URL = '';
-  const response = await fetch(`${API_URL}/candidate/details/data.json`);
+export const fetchAllCandidateDetails = async (ROOT = '') => {
+  const response = await fetch(`${ROOT}/api/candidates/data.json`);
   const data = await response.json();
   return data;
 };

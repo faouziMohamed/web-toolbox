@@ -18,19 +18,5 @@
 .main-content-root {
   overflow: auto;
   @include useSquareSize(100%);
-
-  scroll-behavior: smooth;
-  scrollbar-darkshadow-color: rgb(217, 236, 236);
-  scrollbar-color: lighten(v.$primary_color, 15%) lighten(v.$primary_color, 55%);
-  scrollbar-base-color: red;
-
-  :is(&, & *)::-webkit-scrollbar {
-    width: 5px;
-    background-color: lighten(v.$primary_color, 51%);
-    border: 1px solid lighten(v.$primary_color, 47%);
-  }
-
-  :is(&, & *)::-webkit-scrollbar-thumb {
-    background: darken(v.$primary_color, 11%);
-  }
+  @extend %useScrollbarStyle;
 }

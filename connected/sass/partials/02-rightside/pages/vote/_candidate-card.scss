@@ -104,8 +104,4 @@
 
 .vote-btn {
   align-self: center;
-  &:hover,
-  &:focus {
-    background-color: lighten(v.$primary_color, 15%);
-  }
 }

@@ -23,13 +23,13 @@
 .left-side {
   @extend %left-side-common;
   background-color: #f4fdff;
-  padding-block: 0.2rem;
   flex: 0 0 v.$left-side-width;
   width: v.$left-side-width;
   border-inline-end: 1px solid v.$light_gray;
   transition: transform 0.5s cubic-bezier(1, 0.68, 0, 1.1) 50ms;
   @include usePosition(absolute, 0, 0, $bottom: 0);
   z-index: v.$zindex_level_one;
+  @extend %useScrollbarStyle;
 
   &__closed {
     transform: translate(-100%);
@@ -37,6 +37,9 @@
 
   &__header {
     position: relative;
+    height: 100%;
+    overflow: auto;
+
     @extend %left-side-common;
   }
 

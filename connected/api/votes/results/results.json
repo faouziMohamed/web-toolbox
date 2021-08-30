@@ -1,0 +1,27 @@
+{
+  "data": {
+    "totalRound": 1,
+    "winner": { "id": 10116, "voiceCount": 44 },
+    "totalVoteLastRound": 118,
+    "votes": [
+      {
+        "id": 10190,
+        "name": "Faouzi Mohamed",
+        "voteCounts": [{ "round": 1, "count": 9 }],
+        "position": "3"
+      },
+      {
+        "id": 10116,
+        "name": "Mhamadi Amine",
+        "voteCounts": [{ "round": 1, "count": 65 }],
+        "position": "1"
+      },
+      {
+        "id": 16145,
+        "name": "Samina Moustadrane",
+        "voteCounts": [{ "round": 1, "count": 44 }],
+        "position": "2"
+      }
+    ]
+  }
+}
