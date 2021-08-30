@@ -110,7 +110,7 @@ export class CandidateCard {
     const voteText = this.metadataLabels[this.lang].voteNow;
     this.voteButton = newElement(
       'button',
-      { class: 'btn vote-btn btn-primary', title: 'Click to vote' },
+      { class: 'btn vote-btn btn-primary', title: 'Click to vote', 'data-id': this.data.id },
       [voteText],
     );
   }
@@ -139,7 +139,7 @@ export class CandidateCard {
   createCandidateName() {
     this.candidateName = newElement(
       'span',
-      { class: 'candidate-description__name' },
+      { class: 'candidate-description__name', id: `name-${this.data.id}` },
       [this.data.name],
     );
   }
