@@ -1,7 +1,7 @@
 import {
   fetchAllCandidateDetails,
   useModal,
-} from './utils/utils.candidates.js';
+} from './utils/candidates.utils.js';
 
 const removeLoader = () => {
   const hasLoader = document.querySelector('.has-loader');
@@ -42,4 +42,4 @@ export { CandidateModal } from './modal.js';
 export {
   fetchAllCandidateDetails,
   getCandidateData,
-} from './utils/utils.candidates.js';
+} from './utils/candidates.utils.js';
