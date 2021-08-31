@@ -48,18 +48,32 @@ export class CandidateModal {
     this.candidateModalProfile = newElement(
       'div',
       { class: 'candidate-modal-profile' },
-      [this.candidateProfilePicture],
+      [this.profilPicture],
     );
   }
 
-  createCandidateProfilePciture() {
-    this.candidateProfilePicture = newElement('img', {
+  createCandidateProfilePciture(ROOT = '') {
+    this.altPic = `${ROOT}/images/users/user.svg`;
+
+    this.profilPicture = newElement('img', {
       class: 'candidate-modal-profile__picture',
-      src: this.candidate.getPicturePath(),
+      src: this.altPic,
       alt: `${this.candidate.getDataName()}'s profile picture`,
       width: '200',
       tabindex: 0,
     });
+
+    fetch(`${ROOT}/images/users/${this.candidate.candidateID}`)
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Missing Images');
+        const buf = await res.arrayBuffer();
+        const urlPicture = URL.createObjectURL(new Blob([buf]));
+        this.picturePath = urlPicture;
+        this.profilPicture.src = this.picturePath;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   createFullDetailsBlock() {
@@ -136,7 +150,7 @@ export class CandidateModal {
     </button>
     <div class="candidate-modal-profile">
       <img
-        src="/images/candidates/16145"
+        src="/images/users/16145"
         alt="Mohamed Faouzi's Profile picture"
         class="candidate-modal-profile__picture"
         width="200"

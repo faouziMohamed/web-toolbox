@@ -110,7 +110,11 @@ export class CandidateCard {
     const voteText = this.metadataLabels[this.lang].voteNow;
     this.voteButton = newElement(
       'button',
-      { class: 'btn vote-btn btn-primary', title: 'Click to vote', 'data-id': this.data.id },
+      {
+        class: 'btn vote-btn btn-primary',
+        title: 'Click to vote',
+        'data-id': this.data.id,
+      },
       [voteText],
     );
   }
@@ -155,12 +159,24 @@ export class CandidateCard {
   }
 
   createProfilPicture(ROOT = '') {
-    this.picturePath = `${ROOT}/images/candidates/${this.candidateID}`;
+    this.altPic = `${ROOT}/images/users/user.png`;
+    this.picturePath = this.altPic;
     this.profilPicture = newElement('img', {
       class: 'candidate-figure__picture',
-      src: this.picturePath,
+      src: this.altPic,
       alt: `${this.data.name} Profile picture`,
     });
+    fetch(`${ROOT}/images/users/${this.candidateID}`)
+      .then(async (res) => {
+        if (!res.ok) throw new Error('Missing Images');
+        const buf = await res.arrayBuffer();
+        const urlPicture = URL.createObjectURL(new Blob([buf]));
+        this.picturePath = urlPicture;
+        this.profilPicture.src = this.picturePath;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   createMoreDetailsButtonWrapper() {
@@ -207,7 +223,7 @@ export class CandidateCard {
   <figure class="candidate-card__figure candidate-figure">
     <div class="candidate-figure__top-details">
       <img
-        src="/images/candidates/candidate.png"
+        src="/images/users/candidate.png"
         alt="Mohamed Faouzi profile"
         class="candidate-figure__picture"
       />
