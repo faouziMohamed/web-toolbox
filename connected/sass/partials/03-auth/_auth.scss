@@ -1,6 +1,5 @@
-@use '../partials/variables' as v;
-@use '../partials/mixins/global-mixin' as *;
-@use '../partials/00-globals/global' as *;
+@use '../variables' as v;
+@use '../mixins/global-mixin' as *;
 
 .root {
   @extend %useScrollbarStyle;
@@ -51,38 +50,6 @@
   &__process-text {
     font-size: 1.5rem;
     font-family: v.$main_font;
-  }
-}
-
-.new-pair {
-  background-image: linear-gradient(
-    rgba(0, 0, 255, 0.303) 0%,
-    rgb(255, 255, 255) 50%,
-    rgba(0, 0, 139, 0.323) 100%
-  );
-
-  &__content {
-    height: 100%;
-    @include useFlexbox(column, center, center);
-    &__header {
-      align-items: center;
-    }
-  }
-  .page-header {
-    text-align: center;
-  }
-}
-
-.root_error {
-  .left-side {
-    background-color: v.$secondary_color;
-  }
-  .right-side {
-    background-image: linear-gradient(
-      rgba(255, 0, 106, 0.303) 0%,
-      rgb(255, 255, 255) 50%,
-      rgba(139, 0, 65, 0.323) 100%
-    );
   }
 }
 
@@ -222,39 +189,51 @@
     );
   }
 }
-
-.action-btn-error {
-  border: 1px solid #7b3131;
-  background-color: #860000;
-  box-shadow: 1px 1px 8px #680000;
-  color: #ffffffde;
-  background-image: linear-gradient(
-    to bottom right,
-    #4c1d00,
-    #e31702 50%,
-    #370106 90%
-  );
-  &:hover,
-  &:active {
-    background-color: #b70303;
-    border-color: #9b451b;
-    box-shadow: 1px 1px 8px #c10c0c;
-    color: #fff;
+.root_error {
+  .left-side {
+    background-color: v.$secondary_color;
+  }
+  .right-side {
     background-image: linear-gradient(
-      to left,
-      #5a0212,
-      #df0a0a 50%,
-      #a40000 80%
+      rgba(255, 0, 106, 0.303) 0%,
+      rgb(255, 255, 255) 50%,
+      rgba(139, 0, 65, 0.323) 100%
     );
   }
-  &:active {
+
+  .action-btn-error {
+    border: 1px solid #7b3131;
+    background-color: #860000;
+    box-shadow: 1px 1px 8px #680000;
+    color: #ffffffde;
     background-image: linear-gradient(
-      to top left,
-      #920440,
-      #af0b03 50%,
-      #6b0014 80%
+      to bottom right,
+      #4c1d00,
+      #e31702 50%,
+      #370106 90%
     );
-    color: rgb(255, 240, 240);
+    &:hover,
+    &:active {
+      background-color: #b70303;
+      border-color: #9b451b;
+      box-shadow: 1px 1px 8px #c10c0c;
+      color: #fff;
+      background-image: linear-gradient(
+        to left,
+        #5a0212,
+        #df0a0a 50%,
+        #a40000 80%
+      );
+    }
+    &:active {
+      background-image: linear-gradient(
+        to top left,
+        #920440,
+        #af0b03 50%,
+        #6b0014 80%
+      );
+      color: rgb(255, 240, 240);
+    }
   }
 }
 
