@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Evote App</title>
+    <link rel="stylesheet" href="/styles/auth-style.css" />
+    <link
+      rel="shortcut icon"
+      href="/images/logo/favicon-32x32.png"
+      type="image/x-icon"
+    />
+
+    <link
+      rel="preload"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="root">
+      <div class="left-side">
+        <div class="site-logo">
+          <img
+            src="/images/e-vote-ws.svg"
+            alt="Website logo"
+            class="site-logo__img"
+            width="200"
+          />
+        </div>
+      </div>
+      <div class="right-side">
+        <section class="right-side__content">
+          <header class="page-header">
+            <h1 class="page-header__title">Login to your account</h1>
+            <p class="auth__text">
+              Account not activated yet?
+              <a href="/activate" class="auth__link">Activate your account</a>
+            </p>
+            <p class="auth__text">
+              New to Evote App?
+              <a href="/register.html" class="auth__link">Sign up</a>
+            </p>
+          </header>
+          <div class="auth-form-wrapper">
+            <form action="POST" class="auth-form">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-floating__input"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
+                <label for="username" class="form-floating__label"
+                  >Username</label
+                >
+                <div class="invalid-feedback">Field is required</div>
+              </div>
+              <div class="form-floating">
+                <input
+                  type="password"
+                  class="form-floating__input"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+                <label
+                  for="password"
+                  name="password"
+                  class="form-floating__label"
+                  >Password</label
+                >
+                <div class="invalid-feedback">Field is required</div>
+              </div>
+              <p class="auth__text auth__forgot-password">
+                <a href="/reset-password" class="auth__link"
+                  >Forgot Password?</a
+                >
+              </p>
+              <button class="btn btn-primary signin-btn">Sign in</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
