@@ -121,30 +121,6 @@ button:disabled {
   font-family: "Public Sans", sans-serif;
 }
 
-.new-pair {
-  background-image: linear-gradient(rgba(0, 0, 255, 0.303) 0%, white 50%, rgba(0, 0, 139, 0.323) 100%);
-}
-.new-pair__content {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.new-pair__content__header {
-  align-items: center;
-}
-.new-pair .page-header {
-  text-align: center;
-}
-
-.root_error .left-side {
-  background-color: #4f004d;
-}
-.root_error .right-side {
-  background-image: linear-gradient(rgba(255, 0, 106, 0.303) 0%, white 50%, rgba(139, 0, 65, 0.323) 100%);
-}
-
 .auth__text {
   color: #403f44;
   font-weight: 400;
@@ -287,21 +263,27 @@ button:disabled {
   background-image: linear-gradient(to top left, #750a84, #350b34 50%, #aa0fa8 80%);
 }
 
-.action-btn-error {
+.root_error .left-side {
+  background-color: #4f004d;
+}
+.root_error .right-side {
+  background-image: linear-gradient(rgba(255, 0, 106, 0.303) 0%, white 50%, rgba(139, 0, 65, 0.323) 100%);
+}
+.root_error .action-btn-error {
   border: 1px solid #7b3131;
   background-color: #860000;
   box-shadow: 1px 1px 8px #680000;
   color: #ffffffde;
   background-image: linear-gradient(to bottom right, #4c1d00, #e31702 50%, #370106 90%);
 }
-.action-btn-error:hover, .action-btn-error:active {
+.root_error .action-btn-error:hover, .root_error .action-btn-error:active {
   background-color: #b70303;
   border-color: #9b451b;
   box-shadow: 1px 1px 8px #c10c0c;
   color: #fff;
   background-image: linear-gradient(to left, #5a0212, #df0a0a 50%, #a40000 80%);
 }
-.action-btn-error:active {
+.root_error .action-btn-error:active {
   background-image: linear-gradient(to top left, #920440, #af0b03 50%, #6b0014 80%);
   color: #fff0f0;
 }

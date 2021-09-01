@@ -1,0 +1,19 @@
+@use '../mixins/global-mixin' as *;
+
+.new-pair {
+  background-image: linear-gradient(
+    rgba(0, 0, 255, 0.303) 0%,
+    rgb(255, 255, 255) 50%,
+    rgba(0, 0, 139, 0.323) 100%
+  );
+  &__content {
+    height: 100%;
+    @include useFlexbox(column, center, center);
+    &__header {
+      align-items: center;
+    }
+  }
+  .page-header {
+    text-align: center;
+  }
+}
