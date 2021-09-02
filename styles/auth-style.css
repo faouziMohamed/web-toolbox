@@ -64,6 +64,20 @@ button:disabled {
 .btn-primary:hover, .btn-primary:focus {
   background-color: #0038f2;
 }
+.btn-primary:active {
+  background-color: #001459;
+  border-color: #001459;
+}
+.btn-secondary {
+  background-color: #4f004d;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #9c0098;
+}
+.btn-secondary:active {
+  background-color: #030002;
+  border-color: #030002;
+}
 
 .root {
   display: flex;

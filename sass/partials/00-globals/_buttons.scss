@@ -26,5 +26,20 @@ button {
     &:focus {
       background-color: lighten(v.$primary_color, 15%);
     }
+    &:active {
+      background-color: darken(v.$primary_color, 15%);
+      border-color: darken(v.$primary_color, 15%);
+    }
+  }
+  &-secondary {
+    background-color: v.$secondary_color;
+    &:hover,
+    &:focus {
+      background-color: lighten(v.$secondary_color, 15%);
+    }
+    &:active {
+      background-color: darken(v.$secondary_color, 15%);
+      border-color: darken(v.$secondary_color, 15%);
+    }
   }
 }
