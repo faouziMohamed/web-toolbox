@@ -32,6 +32,7 @@ body {
   @include usePosition(absolute, 0, 0);
   @include useSquareSize(100%);
   background-color: transparent;
+  overflow: auto;
 }
 
 .navbar {
@@ -80,7 +81,6 @@ body {
   @include useFlexbox(column, flex-start, flex-start);
   gap: 5px;
   height: 100%;
-  overflow-y: auto;
 
   &__col-1 {
     @include useFlexbox(column);
