@@ -130,6 +130,32 @@ body {
       content: '\f058';
       font-family: 'Font Awesome 5 pro';
       padding-inline-end: 0.5rem;
+      color: v.$primary_color;
+    }
+    &.has-love {
+      color: rgb(2, 0, 145);
+      font-weight: 600;
+      align-self: center;
+      padding-block-start: 0.7rem;
+      &::before,
+      &::after {
+        content: '\f004';
+        font-family: 'Font Awesome 5 duotone';
+        color: #b00000;
+        font-size: 1.2rem;
+        border: 1px solid #b00000;
+        border-radius: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        padding: 0;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 0.5rem;
+      }
+      &::after {
+        margin-left: 0.5rem;
+      }
     }
   }
 }
@@ -168,6 +194,13 @@ body {
     gap: 2rem;
     width: 100%;
   }
+}
+
+.love_heart::after {
+  content: '\f004';
+  font-family: 'Font Awesome 5 duotone';
+  color: #b00000;
+  font-size: 1.2rem;
 }
 
 @media (min-width: 930px) {
