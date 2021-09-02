@@ -1,0 +1,205 @@
+@use './partials/mixins/global-mixin' as *;
+@use './partials/00-globals/global' as *;
+@use './partials/00-globals/buttons' as *;
+@use './partials/variables' as  v;
+
+%default-btn-link {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 0.5rem;
+  font-weight: 600;
+  font-family: v.$secondary_font;
+}
+body,
+html {
+  height: 100%;
+}
+
+body {
+  background-image: url('../images/vote/range.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.page-overlay {
+  opacity: 0.4;
+  @include useSquareSize(100%);
+  @include usePosition(absolute, 0, 0);
+  background-color: darken(v.$primary_color, 90%);
+}
+.root {
+  @include useFlexbox(column, none, none);
+  @include usePosition(absolute, 0, 0);
+  @include useSquareSize(100%);
+  background-color: transparent;
+}
+
+.navbar {
+  @include useFlexbox(row, space-between, center);
+  padding-inline: 0.7rem;
+
+  &__logo {
+    @include useFlexbox;
+    width: 5rem;
+    height: 4rem;
+    flex-shrink: 0;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__links {
+    flex: 1 0 20%;
+    @include useFlexbox(row, flex-end, center, 1);
+    gap: 0.5125rem;
+
+    &__item {
+      @include useFlexbox(row, center, center);
+      flex: 0 1 5rem;
+    }
+  }
+}
+
+.signup-btn {
+  background-color: rgba(v.$primary_color, 90%);
+  border-color: darken(v.$primary_color, 2%);
+}
+
+.signin-btn {
+  background-color: lighten(v.$secondary_color, 10%);
+}
+
+.btn-link {
+  @extend %default-btn-link;
+}
+
+.main-content {
+  @include useFlexbox(column, flex-start, flex-start);
+  gap: 5px;
+  height: 100%;
+  overflow-y: auto;
+
+  &__col-1 {
+    @include useFlexbox(column);
+    flex: 1 0 20%;
+    width: 100%;
+    color: #fff;
+    align-self: center;
+
+    &__title {
+      font-size: 4rem;
+      font-weight: 600;
+      // font-family: chilanka;
+    }
+    &__text {
+      // font-weight: 600;
+      text-align: start;
+    }
+  }
+
+  &__col-2 {
+    flex: 1 0 auto;
+    width: 100%;
+    @include useFlexbox(column, flex-start);
+  }
+}
+.col-1-content {
+  padding-inline: 1.5rem;
+}
+
+.content-description {
+  display: flex;
+  flex-direction: column;
+  background-color: lighten(v.$primary_color, 65%);
+  list-style-type: none;
+  padding: 1.5rem;
+  border-radius: 0.5625rem;
+  gap: 2rem;
+}
+
+.description-list {
+  @include useFlexbox(column, flex-start, flex-start);
+  list-style-type: none;
+  gap: 0.7rem;
+
+  .description-item {
+    &::before {
+      content: '\f058';
+      font-family: 'Font Awesome 5 pro';
+      padding-inline-end: 0.5rem;
+    }
+  }
+}
+
+.getting-started-btn {
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+.text-cusor-dynamic {
+  border-right: 0.08em solid #d9f9f8;
+}
+
+.txt-rotate {
+  font-weight: 600;
+  font-family: v.$primary_font;
+}
+
+@media (min-width: 650px) {
+  .main-content {
+    @include useFlexbox(row, center, center);
+    width: 100%;
+    padding: 1rem;
+    &__col-1 {
+      flex: 1 1 50%;
+      color: #fff;
+    }
+
+    &__col-2 {
+      flex: 1 0 50%;
+    }
+  }
+
+  .content-description {
+    gap: 2rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 930px) {
+  .main-content {
+    @include useFlexbox(row, center, center);
+    width: 100%;
+    padding: 1rem;
+    &__col-1 {
+      flex: 1 1 50%;
+      color: #fff;
+    }
+
+    &__col-2 {
+      flex: 1 0 50%;
+    }
+  }
+
+  .main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    width: 70%;
+    align-self: center;
+  }
+
+  .main-content__col-1 {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+
+  .main-content__col-2 {
+    grid-column: 2/3;
+    grid-row: 2/4;
+  }
+}

@@ -69,7 +69,7 @@
   color: #ffffff;
   font-weight: 400;
   font-style: italic;
-  font-family: v.$main_font;
+  font-family: v.$primary_font;
   &:hover {
     background-color: rgba(darken($color, 5%), 90%);
   }

@@ -1,4 +1,4 @@
-$main_font: 'Public Sans', sans-serif;
+$primary_font: 'Public Sans', sans-serif;
 $secondary_font: 'Roboto', sans-serif;
 $primary_color: rgba(0, 38, 165, 1);
 $secondary_color: rgba(79, 0, 77, 1);
@@ -6,6 +6,6 @@ $danger_color: rgb(213, 0, 0);
 $light_secondary_color: rgba($primary_color, 0.1);
 $light_gray: rgba(230, 230, 230, 1);
 $left-side-width: 17.5rem;
-$zindex_base_level: 10;
+$zindex_base_level: 1;
 $zindex_level_one: 100;
 $zindex_modal_level_one: 200;

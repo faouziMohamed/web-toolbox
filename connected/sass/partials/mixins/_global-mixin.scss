@@ -1,17 +1,17 @@
 @use '../variables' as v;
-@mixin useFlexbox($dir: row, $jt: center, $al: center, $inline: 0) {
-  @if $inline==0 {
+@mixin useFlexbox($dir: row, $jt: center, $al: center, $inline: none) {
+  @if $inline==none {
     display: flex;
   } @else {
     display: inline-flex;
   }
-  @if $dir != 0 {
+  @if $dir != none {
     flex-direction: $dir;
   }
-  @if $jt !=0 {
+  @if $jt !=none {
     justify-content: $jt;
   }
-  @if $al !=0 {
+  @if $al !=none {
     align-items: $al;
   }
 }
