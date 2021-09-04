@@ -143,13 +143,13 @@ export class UserTableRow {
     return this.createColumn(div);
   }
 
-  createNameCol() {
+  createNameCol(ROOT = '') {
     const fullname = newElement('p', { class: 'user-fullname' }, [
       this.userData.name,
     ]);
 
     const img = newElement('img', {
-      src: '/images/users/user.svg',
+      src: `${ROOT}/images/users/user.svg`,
       alt: `${this.userData.name}'s profile`,
       width: '50',
       class: 'result__name__img',
