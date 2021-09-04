@@ -87,6 +87,69 @@
   white-space: nowrap;
 }
 
+%modalContainerDefault {
+  @include useFlexbox(column);
+  @include usePosition(absolute, 0, 0);
+  @include useSquareSize(100%);
+  z-index: v.$zindex_modal_level_one;
+  transition: background-color 0.01s ease;
+}
+
+@mixin useFormFloating() {
+  .form-floating {
+    position: relative;
+    padding-block-start: 0.5rem;
+
+    &__input {
+      display: block;
+      background-color: #e9ecef;
+      padding-inline: 0.75rem;
+      padding-block: 1rem 0.5rem;
+      width: 100%;
+      height: 3.5rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #3e5569;
+      background-color: #fff;
+      border: 0.025rem solid #d4d7da;
+      border-radius: 0.225rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+      &:focus {
+        background-color: rgba(0, 0, 0, 0.4%);
+      }
+      :is(&:focus, &:not(:placeholder-shown)) ~ label {
+        opacity: 0.65;
+        transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+      }
+
+      &::placeholder {
+        opacity: 0;
+      }
+      &:required ~ label::after {
+        content: ' *';
+        color: #f00;
+      }
+    }
+
+    &__label {
+      position: absolute;
+      transform-origin: 0 0;
+      top: 0rem;
+      left: 0;
+      @include useSquareSize(100%);
+      pointer-events: none;
+      padding-block-start: 1.5rem;
+      padding-inline-start: 0.75rem;
+      font-size: 0.88rem;
+      border: 1px solid transparent;
+      transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+      color: rgb(2, 0, 48);
+      font-weight: 700;
+    }
+  }
+}
+
 @mixin useInfoIndicator() {
   .info-indicator-wrapper {
     @include useFlexbox($jt: flex-end, $al: flex-start);
@@ -142,6 +205,11 @@
   }
 }
 
+%useBtn {
+  color: #e9e9e9;
+  border: none;
+}
+
 @mixin useBtnStyle($color) {
   @extend %useBtn;
   box-shadow: 0 0 0.1rem 0.01rem $color;
@@ -164,6 +232,28 @@
     }
     &.btn-primary:focus {
       outline-color: adjust-hue($color, -100deg);
+    }
+  }
+}
+
+@mixin useBtnNobg($color) {
+  @extend %useBtn;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 70%);
+
+  &:hover,
+  &:focus {
+    color: rgba(0, 0, 0, 100%);
+  }
+  &:active {
+    background-color: rgba(0, 0, 0, 20%);
+  }
+
+  &:focus {
+    outline: 2px solid lighten($color, 40%);
+    &:hover {
+      outline: 2px solid lighten($color, 40%);
+      background-color: lighten($color, 55%);
     }
   }
 }
@@ -192,5 +282,9 @@
 
   &-danger {
     @include useBtnStyle($danger_color);
+  }
+
+  &-nobg {
+    @include useBtnNobg($primary_color);
   }
 }

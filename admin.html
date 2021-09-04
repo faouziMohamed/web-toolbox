@@ -222,12 +222,12 @@
           </header>
           <div class="main-content">
             <div
-              class="candidate-modal-container hidden"
+              class="admin-modal hidden"
               tabindex="-1"
-              aria-labelledby="candidate-full-details__name"
-              aria-describedby="candidate-modal-description"
+              aria-labelledby="admin-modal__title"
+              aria-describedby="admin-modal__description"
               aria-hidden="true"
-              id="candidate-modal-container"
+              id="admin-modal"
             ></div>
             <section class="user-management">
               <header class="user-management__header">
@@ -238,7 +238,7 @@
                   All aspects related to the app users can be managed from this
                   page
                 </small>
-                <button class="btn btn-primary btn-flex">
+                <button class="btn btn-primary btn-flex" id="openAddModal">
                   <i class="fas fa-plus"></i>
                   <span class="btn-flex--text">Create User</span>
                 </button>

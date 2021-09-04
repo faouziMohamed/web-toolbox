@@ -15,6 +15,8 @@ export const lists = async () => {
   });
 
   useUserFilter(tBody, data, 'all');
+  const dataStringified = JSON.stringify(data);
+  localStorage.setItem('users', dataStringified);
 };
 
 export const filterUsers = async ({ by = 'all', user, tBody }) => {
@@ -43,6 +45,7 @@ export const getUsersData = async (ROOT = '') => {
   const { data } = await users.json();
   return data;
 };
+
 function changeActiveButton(e) {
   const activeBtn = document.querySelector('.tab-active');
   if (e.target.classList.contains('tab-active') && !activeBtn) return;
