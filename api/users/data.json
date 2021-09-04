@@ -6,10 +6,10 @@
       "username": "faouzi",
       "name": "Faouzi Mohamed",
       "email": "faouzimohamed@email.me",
-      "role": 0,
-      "accountType": 0,
-      "voteStatus": 1,
-      "activation": 1
+      "role": "admin",
+      "userType": "candidate",
+      "hasVoted": true,
+      "accountActivated": true
     },
     {
       "id": "104576",
@@ -17,10 +17,10 @@
       "username": "cxazihar",
       "name": "Amir Jalal",
       "email": "ms12@glpc.ma",
-      "role": 1,
-      "accountType": 0,
-      "voteStatus": 0,
-      "activation": 1
+      "role": "user",
+      "userType": "candidate",
+      "hasVoted": false,
+      "accountActivated": true
     },
     {
       "id": "904577",
@@ -28,10 +28,10 @@
       "username": "docteur12",
       "name": "Halim Mohamed",
       "email": "doc12@enf.uit.ja",
-      "role": 1,
-      "accountType": 1,
-      "voteStatus": 0,
-      "activation": 1
+      "role": "user",
+      "userType": "voter",
+      "hasVoted": false,
+      "accountActivated": true
     },
     {
       "id": "604595",
@@ -39,10 +39,10 @@
       "username": "samido",
       "name": "Samir Doudou",
       "email": "sm97@pipota.com",
-      "role": 1,
-      "accountType": 0,
-      "voteStatus": 0,
-      "activation": 1
+      "role": "user",
+      "userType": "candidate",
+      "hasVoted": false,
+      "accountActivated": true
     },
     {
       "id": "654592",
@@ -50,10 +50,10 @@
       "username": "rachid",
       "name": "Rachid Moustapha",
       "email": "rmoustapha@mymail.com",
-      "role": 0,
-      "accountType": 1,
-      "voteStatus": 0,
-      "activation": 0
+      "role": "admin",
+      "userType": "voter",
+      "hasVoted": false,
+      "accountActivated": false
     },
     {
       "id": "654593",
@@ -61,10 +61,10 @@
       "username": "malak",
       "name": "Salim Malak",
       "email": "mslim99@gmailk.com",
-      "role": 1,
-      "accountType": 0,
-      "voteStatus": 1,
-      "activation": 0
+      "role": "user",
+      "userType": "candidate",
+      "hasVoted": false,
+      "accountActivated": false
     }
   ]
 }

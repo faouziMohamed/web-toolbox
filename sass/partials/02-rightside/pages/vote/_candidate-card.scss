@@ -96,9 +96,7 @@
     max-width: 13rem;
     font-size: 0.8rem;
     text-align: center;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    @extend %useEllipsisText;
   }
 }
 
