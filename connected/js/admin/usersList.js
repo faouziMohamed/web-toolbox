@@ -22,8 +22,8 @@ export const lists = async () => {
   });
 };
 
-export const getUsersData = async () => {
-  const users = await fetch('/api/users/data.json');
+export const getUsersData = async (ROOT = '') => {
+  const users = await fetch(`${ROOT}/api/users/data.json`);
   const { data } = await users.json();
   return data;
 };
