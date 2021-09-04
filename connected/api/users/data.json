@@ -1,0 +1,70 @@
+{
+  "data": [
+    {
+      "id": "104575",
+      "cin": 10015,
+      "username": "faouzi",
+      "name": "Faouzi Mohamed",
+      "email": "faouzimohamed@email.me",
+      "role": 0,
+      "accountType": 0,
+      "voteStatus": 1,
+      "activation": 1
+    },
+    {
+      "id": "104576",
+      "cin": 15016,
+      "username": "cxazihar",
+      "name": "Amir Jalal",
+      "email": "ms12@glpc.ma",
+      "role": 1,
+      "accountType": 0,
+      "voteStatus": 0,
+      "activation": 1
+    },
+    {
+      "id": "904577",
+      "cin": 10310,
+      "username": "docteur12",
+      "name": "Halim Mohamed",
+      "email": "doc12@enf.uit.ja",
+      "role": 1,
+      "accountType": 1,
+      "voteStatus": 0,
+      "activation": 1
+    },
+    {
+      "id": "604595",
+      "cin": 10360,
+      "username": "samido",
+      "name": "Samir Doudou",
+      "email": "sm97@pipota.com",
+      "role": 1,
+      "accountType": 0,
+      "voteStatus": 0,
+      "activation": 1
+    },
+    {
+      "id": "654592",
+      "cin": 10365,
+      "username": "rachid",
+      "name": "Rachid Moustapha",
+      "email": "rmoustapha@mymail.com",
+      "role": 0,
+      "accountType": 1,
+      "voteStatus": 0,
+      "activation": 0
+    },
+    {
+      "id": "654593",
+      "cin": 10366,
+      "username": "malak",
+      "name": "Salim Malak",
+      "email": "mslim99@gmailk.com",
+      "role": 1,
+      "accountType": 0,
+      "voteStatus": 1,
+      "activation": 0
+    }
+  ]
+}

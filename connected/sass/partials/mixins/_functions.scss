@@ -1,0 +1,4 @@
+@function createColor($base: $primary_color, $rotate: 0) {
+  $color: adjust-hue($base, $rotate);
+  @return darken($color, 5%);
+}

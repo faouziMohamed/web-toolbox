@@ -1,11 +1,19 @@
+@use './mixins/functions' as *;
+
 $primary_font: 'Public Sans', sans-serif;
 $secondary_font: 'Roboto', sans-serif;
-$primary_color: rgba(0, 38, 165, 1);
-$secondary_color: rgba(79, 0, 77, 1);
-$danger_color: rgb(213, 0, 0);
-$light_secondary_color: rgba($primary_color, 0.1);
-$light_gray: rgba(230, 230, 230, 1);
+
 $left-side-width: 17.5rem;
 $zindex_base_level: 1;
+$zindex_behind: -1;
 $zindex_level_one: 100;
 $zindex_modal_level_one: 200;
+
+$primary_color: #000ba5;
+$secondary_color: createColor($primary_color, 290deg);
+$affirmative_color: createColor($primary_color, -40deg);
+$warning_color: createColor($primary_color, 60deg);
+$danger_color: createColor($primary_color, 120deg);
+
+$light_secondary_color: rgba($primary_color, 0.1);
+$light_gray: rgba(230, 230, 230, 1);

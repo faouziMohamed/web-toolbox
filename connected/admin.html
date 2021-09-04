@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin | Evote app</title>
+    <link
+      rel="shortcut icon"
+      href="/images/logo/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="preload" href="/styles/style.css" as="style" />
+    <link rel="stylesheet" href="/styles/style.css" />
+
+    <!-- <link rel="preload" href="/css/all.css" as="style" />
+    <link rel="stylesheet" href="/css/all.css" /> -->
+
+    <link
+      rel="preload"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="root">
+      <div class="left-side-parent">
+        <div class="left-side">
+          <header class="left-side__header">
+            <a href="/" class="left-side__site-logo-link">
+              <img
+                src="/images/e-vote-ws.svg"
+                width="70"
+                alt="Website logo"
+                class="left-side__site-logo"
+              />
+            </a>
+            <div class="left-side__username-wrap">
+              <h1 class="left-side__title">
+                <a class="left-side__user-profil-link" href="/#">
+                  <div class="left-side__img-profil-wrapper">
+                    <img
+                      src="/images/coder.gif"
+                      width="50"
+                      alt="User profile picture"
+                      class="left-side__userprofil-pic"
+                    />
+                  </div>
+                  <span class="left-side__user-fullname"> Faouzi Mohamed </span>
+                </a>
+              </h1>
+            </div>
+            <nav class="site-nav">
+              <ul class="site-nav__list">
+                <li class="site-nav__item">
+                  <a href="/" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-person-booth"> </i>
+                    <span class="nav-text">Vote</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a href="/candidates.html" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-id-card"> </i>
+                    <span class="nav-text">Candidates</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a href="/results.html" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-chart-bar"> </i>
+                    <span class="nav-text">Results</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a href="#" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-user"> </i>
+                    <span class="nav-text">Profile</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    href="/admin.html"
+                    class="site-nav__link site-nav__active-tab"
+                  >
+                    <i class="left-nav-icon fas fa-user-cog"></i>
+                    <span class="nav-text">Admin</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      </div>
+
+      <div class="main-page">
+        <div class="main-page__navbar">
+          <div class="burger-menu">
+            <input
+              type="checkbox"
+              id="menu-toggler"
+              class="burger-menu__checkbox"
+            />
+            <label for="menu-toggler" class="burger-menu__label"></label>
+          </div>
+
+          <ul class="top-navbar">
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn lang-btn">
+                <img
+                  src="/images/icons/english.svg"
+                  class="lang-flag"
+                  alt="English flag"
+                  width="50"
+                />
+                <div class="lang-drop-down hidden" aria-hidden="true">
+                  <ul class="lang-list">
+                    <li class="lang-item" tabindex="0" data-lang="en">
+                      <img
+                        src="/images/icons/english.svg"
+                        alt="English"
+                        class="lang-img"
+                        data-lang="en"
+                      />
+                      <span class="lang-text">English</span>
+                    </li>
+                    <li class="lang-item" tabindex="0" data-lang="fr">
+                      <img
+                        src="/images/icons/french.svg"
+                        alt="French"
+                        class="lang-img"
+                        data-lang="fr"
+                      />
+                      <span class="lang-text">French</span>
+                    </li>
+                  </ul>
+                </div>
+              </button>
+            </li>
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn notif-btn">
+                <i class="fas fa-bell fa-1x"> </i>
+              </button>
+            </li>
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn profil-btn">
+                <img
+                  alt="User profile picture"
+                  class="user-profil-thumb"
+                  src="/images/coder.gif"
+                  title="Faouzi Mohamed's profile picture"
+                  width="40"
+                />
+                <div class="user-menu-card hidden" aria-label="menu">
+                  <div class="user-profile">
+                    <figure class="user-figure">
+                      <div class="user-picture">
+                        <img
+                          src="/images/coder.gif"
+                          alt="User profile picture"
+                          class="user-picture-img"
+                          width="138"
+                          height="138"
+                        />
+                      </div>
+                      <figcaption class="user-name">Faouzi Mohamed</figcaption>
+                    </figure>
+                  </div>
+                  <nav class="user-actions-wrapper">
+                    <ul class="action-wrapper">
+                      <li class="action-item">
+                        <a href="/myaccount" class="action-item-link">
+                          <i class="far fa-user-alt"> </i>
+                          <span class="link-action-text">Account</span>
+                        </a>
+                      </li>
+                      <li class="action-item">
+                        <a href="/notifs" class="action-item-link">
+                          <i class="fas fa-bell"> </i>
+                          <span class="link-action-text">Setting</span>
+                        </a>
+                      </li>
+                      <li class="action-item">
+                        <a
+                          href="/logout"
+                          class="action-item-link action-logout"
+                        >
+                          <span class="link-action-text">Logout</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <main class="main-content-root">
+          <header class="main-content-header">
+            <div class="breadcrumb">
+              <div class="base breadcrumb__path">Admin</div>
+              <div class="breadcrumb__path active">Users</div>
+            </div>
+            <h2 class="greeting-msg">
+              Hi, here you can add remove and activate users account
+            </h2>
+          </header>
+          <div class="main-content">
+            <div
+              class="candidate-modal-container hidden"
+              tabindex="-1"
+              aria-labelledby="candidate-full-details__name"
+              aria-describedby="candidate-modal-description"
+              aria-hidden="true"
+              id="candidate-modal-container"
+            ></div>
+            <section class="user-management">
+              <header class="user-management__header">
+                <h2 class="user-management__title">Users Management</h2>
+              </header>
+              <div class="user-management__description">
+                <small class="description-text">
+                  All aspects related to the app users can be managed from this
+                  page
+                </small>
+                <button class="btn btn-primary btn-flex">
+                  <i class="fas fa-plus"></i>
+                  <span class="btn-flex--text">Create User</span>
+                </button>
+              </div>
+              <div class="users-types">
+                <ul class="users-types__tab-list">
+                  <li class="users-types__tab">
+                    <button class="tab-btn btn tab-active">All Users</button>
+                  </li>
+                  <li class="users-types__tab">
+                    <button class="tab-btn btn">Normal Users</button>
+                  </li>
+                  <li class="users-types__tab">
+                    <button class="tab-btn btn">Administrators</button>
+                  </li>
+                  <li class="users-types__tab">
+                    <button class="tab-btn btn">Candidates</button>
+                  </li>
+                </ul>
+              </div>
+              <div class="tab-window">
+                <div class="tab-window__row">
+                  <div class="user-research">
+                    <i class="search-icon far fa-search"></i>
+                    <input
+                      type="search"
+                      class="search-input"
+                      id="users-search"
+                      name="search"
+                      aria-label="Search Users by name, username, email or cin..."
+                      placeholder="Search Users by name, username, email or cin..."
+                    />
+                  </div>
+                  <div class="actions hidden">
+                    <button class="btn btn-affirmative actions-edit">
+                      <i class="fad fa-edit"></i>
+                      <span class="actions--text">Edit</span>
+                    </button>
+                    <button class="btn btn-warning action-lock-account">
+                      <i class="fad fa-user-lock"></i>
+                      <span class="actions--text">Lock account</span>
+                    </button>
+                    <button class="btn action-delete btn-danger">
+                      <i class="fad fa-trash-alt"></i>
+                      <span class="actions--text">Delete</span>
+                    </button>
+                    <button class="btn btn-secondary action-delete hidden">
+                      <i class="fad fa-trash-alt"></i>
+                      <span class="actions--text">Save actions</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="table-container">
+                  <table class="users-table">
+                    <thead class="users-table__header">
+                      <tr class="users-table__row">
+                        <th class="users-table__col">
+                          <div class="user-input">
+                            <div class="user-input__bg"></div>
+                            <label
+                              for="field--checkbox"
+                              class="user-input__overlay"
+                            >
+                            </label>
+                            <input
+                              type="checkbox"
+                              name="field--checkbox"
+                              id="field--checkbox"
+                              class="select-all-visible user-input__checkbox"
+                            />
+                          </div>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="username">Username</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--name">Name</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--email">Email</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--role">Role</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--status">Activation</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--status">Account type</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--status">Vote Status</p>
+                        </th>
+                        <th class="users-table__col">
+                          <p class="field--status">CIN</p>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="users-table-body">
+                      <tr class="users-table__row search-results result">
+                        <td class="users-table__col result__col">
+                          <div class="user-input">
+                            <div class="user-input__bg"></div>
+                            <label
+                              for="result--checkbox"
+                              class="user-input__overlay"
+                            >
+                            </label>
+                            <input
+                              type="checkbox"
+                              name="field--checkbox"
+                              id="result--checkbox"
+                              class="
+                                user-input__checkbox
+                                result--checkbox
+                                select-user
+                              "
+                            />
+                          </div>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="username">faouzi</p>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <div class="result__name">
+                            <div class="result__name__profile">
+                              <img
+                                class="result__name__img"
+                                src="/images/users/user.svg"
+                                alt="Faouzi Mohamed's profile"
+                                width="50"
+                              />
+                            </div>
+                            <p class="user-fullname">Faouzi Mohamed</p>
+                          </div>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="result--email">faouzimohamed@email.me</p>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="result--role">admin</p>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="result--status">Activate</p>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="result--status">Candidate</p>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="result--status">Has vote</p>
+                        </td>
+                        <td class="users-table__col result__col">
+                          <p class="result--status">15660</p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="/js/main.js" type="module" async></script>
+  </body>
+</html>

@@ -65,12 +65,11 @@ body {
 }
 
 .signup-btn {
-  background-color: rgba(v.$primary_color, 90%);
   border-color: darken(v.$primary_color, 2%);
 }
 
 .signin-btn {
-  background-color: lighten(v.$secondary_color, 10%);
+  border-color: darken(v.$secondary_color, 2%);
 }
 
 .btn-link {

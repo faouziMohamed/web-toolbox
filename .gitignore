@@ -2,3 +2,5 @@ connected/**/*.css
 connected/**/*.css.map
 node_modules
 loader/fluide1/css
+connected/css
+connected/webfonts/

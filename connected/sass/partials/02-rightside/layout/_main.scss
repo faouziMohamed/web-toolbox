@@ -10,7 +10,7 @@
 }
 
 .main-content {
-  @include useFlexbox(column, $jt: 0, $al: center);
+  @include useFlexbox(column, $jt: none, $al: center);
   padding: 1rem;
   min-width: 280px;
 }
