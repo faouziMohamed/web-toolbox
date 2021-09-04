@@ -7,12 +7,9 @@
 %padding-1rem {
   padding: 1rem;
 }
+
 .candidate-modal-container {
-  @include useFlexbox(column);
-  @include usePosition(absolute, 0, 0);
-  @include useSquareSize(100%);
-  z-index: v.$zindex_modal_level_one;
-  transition: background-color 0.01s ease;
+  @extend %modalContainerDefault;
   background-color: rgba(darken(v.$primary_color, 5%), 0.39);
 }
 
