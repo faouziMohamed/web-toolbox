@@ -1,4 +1,4 @@
-import { newElement } from '../utils/dom-utils.js';
+import { capitalizeAll, newElement } from '../utils/dom-utils.js';
 
 const dataFormat = {
   id: -1,
@@ -6,35 +6,44 @@ const dataFormat = {
   username: '',
   name: '',
   email: '',
-  role: -1,
-  accountType: -1,
-  voteStatus: -1,
-  activation: -1,
+  role: '',
+  userType: '',
+  hasVoted: true,
+  accountActivated: true,
 };
 
-const dataMap = {
-  role: {
-    0: 'Admin',
-    1: 'User',
+export const dataMap = {
+  en: {
+    id: 'ID',
+    cin: 'CIN',
+    username: 'Username',
+    name: 'Name',
+    email: 'Email',
+    role: { admin: 'Admin', user: 'User' },
+    userType: { candidate: 'Candidate', voter: 'Voter' },
+    hasVoted: { true: 'Has Voted', false: 'Has Not Voted yet' },
+    accountActivated: {
+      true: 'Account Activated',
+      false: 'Account Not Activated',
+    },
   },
-  accountType: {
-    0: 'Voter',
-    1: 'Candidate/Voter',
-  },
-  voteStatus: {
-    '-1': 'Unkown',
-    0: 'Not Voted',
-    1: 'Voted',
-  },
-  activation: {
-    0: 'Not Activated',
-    1: 'Activated',
+  fr: {
+    id: 'ID',
+    cin: 'CIN',
+    username: "Nom d'utilisateur",
+    name: 'Nom',
+    email: 'Email',
+    role: { admin: 'Administrateur', user: 'Utilisateur' },
+    userType: { candidate: 'Candidat', voter: 'Votant' },
+    hasVoted: { true: 'A voté', false: "N'a pas voté" },
+    accountActivated: { true: 'Compte activé', false: 'Compte non activé' },
   },
 };
 
 export class UserTableRow {
   constructor(userData = dataFormat) {
     this.userData = userData;
+    this.lang = localStorage.getItem('lang') || 'en';
     this.create();
   }
 
@@ -77,25 +86,25 @@ export class UserTableRow {
 
     this.roleCol = this.createColumn(
       newElement('p', { class: 'result__role' }, [
-        dataMap.role[this.userData.role],
+        capitalizeAll(this.userData.role),
       ]),
     );
 
     this.activationCol = this.createColumn(
       newElement('p', { class: 'result__activation' }, [
-        dataMap.activation[this.userData.activation],
+        dataMap[this.lang].accountActivated[this.userData.accountActivated],
       ]),
     );
 
     this.accountTypeCol = this.createColumn(
       newElement('p', { class: 'result__account-type' }, [
-        dataMap.accountType[this.userData.accountType],
+        dataMap[this.lang].userType[this.userData.userType],
       ]),
     );
 
     this.voteStatusCol = this.createColumn(
       newElement('p', { class: 'result__vote-status' }, [
-        dataMap.voteStatus[this.userData.voteStatus],
+        dataMap[this.lang].hasVoted[this.userData.hasVoted],
       ]),
     );
 

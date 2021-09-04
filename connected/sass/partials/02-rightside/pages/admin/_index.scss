@@ -26,7 +26,8 @@
   margin-block: 2rem;
   &__tab-list {
     list-style-type: none;
-    @include useFlexbox(none, flex-start);
+    @include useFlexbox(none);
+    flex-wrap: wrap;
     gap: 0.125rem;
   }
 }
@@ -35,15 +36,16 @@
   @extend .btn-primary;
 }
 
-.tab {
-  &-btn {
-    &:not(.tab-active) {
-      background-color: transparent;
-      border: none;
-      &:active {
-        background-color: rgba(0, 0, 0, 20%);
-      }
-    }
+.tab-btn:not(.tab-active) {
+  background-color: transparent;
+  border: none;
+  color: rgba(0, 0, 0, 70%);
+
+  &:hover {
+    color: rgba(0, 0, 0, 100%);
+  }
+  &:active {
+    background-color: rgba(0, 0, 0, 20%);
   }
 }
 
@@ -106,6 +108,7 @@
   }
   &-input {
     @extend %useInput;
+    @extend %useEllipsisText;
     line-height: 2;
     font-size: 1rem;
     height: 100%;
@@ -201,4 +204,10 @@
   .user-fullname {
     width: max-content;
   }
+}
+
+@media (max-width: 380px) {
+  // .search-input {
+  //   @extend %useEllipsisText;
+  // }
 }

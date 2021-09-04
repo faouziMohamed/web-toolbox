@@ -81,6 +81,12 @@
   }
 }
 
+%useEllipsisText {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 @mixin useInfoIndicator() {
   .info-indicator-wrapper {
     @include useFlexbox($jt: flex-end, $al: flex-start);
