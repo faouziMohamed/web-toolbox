@@ -1,3 +1,4 @@
+import { userAdd } from './admin/userAdd.js';
 import { lists } from './admin/usersList.js';
 import { useCandidates } from './candidates/useModal-Candidates.js';
 import { useDropDown, useHeaderMenu } from './header/index.header.js';
@@ -8,3 +9,4 @@ useHeaderMenu();
 useCandidates();
 
 lists();
+userAdd();
