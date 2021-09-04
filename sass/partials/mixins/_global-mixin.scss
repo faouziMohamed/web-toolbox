@@ -1,4 +1,6 @@
 @use '../variables' as v;
+@use './functions' as *;
+
 @mixin useFlexbox($dir: row, $jt: center, $al: center, $inline: none) {
   @if $inline==none {
     display: flex;
@@ -131,5 +133,58 @@
         transform: rotate(360deg);
       }
     }
+  }
+}
+
+@mixin useBtnStyle($color) {
+  @extend %useBtn;
+  box-shadow: 0 0 0.1rem 0.01rem $color;
+  border: 1px solid lighten($color, 10%);
+  background-color: $color;
+  &:hover,
+  &:focus {
+    background-color: darken($color, 7%);
+  }
+  &:active {
+    border-color: lighten($color, 30%);
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: 2px solid lighten($color, 40%);
+    &:hover {
+      outline: 2px solid lighten($color, 40%);
+      background-color: darken($color, 2%);
+    }
+    &.btn-primary:focus {
+      outline-color: adjust-hue($color, -100deg);
+    }
+  }
+}
+
+@mixin createButtonTheme($primary-color) {
+  $secondary_color: createColor($primary-color, 290deg);
+  $affirmative_color: createColor($primary-color, -40deg);
+  $warning_color: createColor($primary-color, 60deg);
+  $danger_color: createColor($primary-color, 120deg);
+
+  &-primary {
+    @include useBtnStyle($primary_color);
+  }
+
+  &-secondary {
+    @include useBtnStyle($secondary_color);
+  }
+
+  &-affirmative {
+    @include useBtnStyle($affirmative_color);
+  }
+
+  &-warning {
+    @include useBtnStyle($warning_color);
+  }
+
+  &-danger {
+    @include useBtnStyle($danger_color);
   }
 }

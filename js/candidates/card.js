@@ -194,7 +194,7 @@ export class CandidateCard {
     this.moreDetailsButton = newElement(
       'button',
       {
-        class: 'btn more-details-btn',
+        class: 'btn btn-affirmative more-details-btn',
         title: `${altText} ${this.data.name}`,
         'data-id': this.candidateID,
       },

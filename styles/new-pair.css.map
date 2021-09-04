@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../sass/partials/03-auth/_new-pair.scss","../sass/partials/mixins/_global-mixin.scss"],"names":[],"mappings":"AAEA;EACE;;AAKA;EACE;ECNA;EAKA,gBDEoB;ECCpB,iBDD4B;ECI5B,aDJoC;;AACpC;EACE;;AAGJ;EACE","file":"new-pair.css"}
+{"version":3,"sourceRoot":"","sources":["../sass/partials/03-auth/_new-pair.scss","../sass/partials/mixins/_global-mixin.scss"],"names":[],"mappings":"AAEA;EACE;;AAKA;EACE;ECJA;EAKA;EAGA,iBDH4B;ECM5B,aDNoC;;AACpC;EACE;;AAGJ;EACE","file":"new-pair.css"}
