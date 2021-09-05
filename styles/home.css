@@ -1,3 +1,7 @@
+.transparent-color {
+  color: transparent;
+}
+
 .btn-primary, .btn-secondary, .btn-affirmative, .btn-warning, .btn-danger, .btn-nobg {
   color: #e9e9e9;
   border: none;
@@ -51,10 +55,10 @@ button:disabled {
   border: 1px solid #000ed8;
   background-color: #000ba5;
 }
-.btn-primary:hover, .btn-primary:focus {
+:is(.btn-primary:hover, .btn-primary:focus):not(:disabled) {
   background-color: #000981;
 }
-.btn-primary:active {
+.btn-primary:active:not(:disabled) {
   border-color: #3f4cff;
   opacity: 0.7;
 }
@@ -73,10 +77,10 @@ button:disabled {
   border: 1px solid #00bf92;
   background-color: #008c6b;
 }
-.btn-secondary:hover, .btn-secondary:focus {
+:is(.btn-secondary:hover, .btn-secondary:focus):not(:disabled) {
   background-color: #006850;
 }
-.btn-secondary:active {
+.btn-secondary:active:not(:disabled) {
   border-color: #26ffcc;
   opacity: 0.7;
 }
@@ -95,10 +99,10 @@ button:disabled {
   border: 1px solid #008cbf;
   background-color: #00668c;
 }
-.btn-affirmative:hover, .btn-affirmative:focus {
+:is(.btn-affirmative:hover, .btn-affirmative:focus):not(:disabled) {
   background-color: #004c68;
 }
-.btn-affirmative:active {
+.btn-affirmative:active:not(:disabled) {
   border-color: #26c5ff;
   opacity: 0.7;
 }
@@ -117,10 +121,10 @@ button:disabled {
   border: 1px solid #b200bf;
   background-color: #82008c;
 }
-.btn-warning:hover, .btn-warning:focus {
+:is(.btn-warning:hover, .btn-warning:focus):not(:disabled) {
   background-color: #610068;
 }
-.btn-warning:active {
+.btn-warning:active:not(:disabled) {
   border-color: #f126ff;
   opacity: 0.7;
 }
@@ -139,10 +143,10 @@ button:disabled {
   border: 1px solid #bf000d;
   background-color: #8c0009;
 }
-.btn-danger:hover, .btn-danger:focus {
+:is(.btn-danger:hover, .btn-danger:focus):not(:disabled) {
   background-color: #680007;
 }
-.btn-danger:active {
+.btn-danger:active:not(:disabled) {
   border-color: #ff2634;
   opacity: 0.7;
 }
