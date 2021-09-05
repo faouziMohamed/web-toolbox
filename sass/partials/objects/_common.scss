@@ -1,0 +1,44 @@
+@use '../mixins/global-mixin' as *;
+@use '../variables' as v;
+
+%useCheckboxContainer {
+  position: relative;
+  @include useFlexbox(none, none, center, 1);
+}
+
+%label-element {
+  @include useFlexbox(row, flex-start, center);
+  gap: 3px;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 0 2px 1px rgba(99, 83, 83, 0.241);
+  border: 1px solid rgb(237, 237, 237);
+  background-color: rgb(232, 229, 229);
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 0.87rem;
+}
+
+%slider-element-disabled {
+  @include useFlexbox(none, none, center);
+  flex-basis: 100%;
+  border-radius: 1rem;
+  height: 1.3rem;
+  width: 1.3rem;
+  background-color: lighten(v.$secondary_color, 100%);
+  box-shadow: 0 0 0.325rem 2px inset rgb(211, 209, 209);
+  border: 1px solid rgba(#333, 25%);
+  transition: all 0.2s ease-in-out;
+  background-color: rgb(231, 233, 235);
+
+  &::before {
+    content: '';
+    @include useFlexbox(none, none, center);
+    @include useSquareSize(1rem);
+    position: relative;
+    border-radius: 50%;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0 0 0.125rem 1px rgb(116, 107, 107);
+    background-color: rgb(170, 166, 166);
+  }
+}
