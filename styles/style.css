@@ -62,6 +62,13 @@ html {
   z-index: 200;
   transition: background-color 0.01s ease;
 }
+@media (max-height: 530px) {
+  .admin-modal, .candidate-modal-container {
+    justify-content: flex-start;
+    overflow: auto;
+    padding-block-start: 1rem;
+  }
+}
 
 .transparent-color {
   color: transparent;
@@ -1288,6 +1295,7 @@ td {
 .add-user-modal {
   background-color: #eee;
   width: 60%;
+  max-width: 39.75rem;
   padding: 1rem;
 }
 
