@@ -1,0 +1,42 @@
+@use './common' as *;
+
+.checkbox-check {
+  @extend %useCheckboxContainer;
+}
+
+.label-checker {
+  @extend %label-element;
+  padding: 0.2rem;
+  border-radius: 50%;
+}
+
+.checker {
+  @extend %slider-element-disabled;
+  @include useSquareSize(1.4rem);
+  @include useFlexbox(none, center, center);
+  border-radius: 50%;
+  &::before {
+    $color: darken($secondary_color, 100%);
+    transition-duration: 300ms;
+    transform: scale(1.1);
+    border-radius: 50%;
+    box-shadow: 0 0 0.1rem 2px $color;
+  }
+}
+
+.checkbox-checker:checked {
+  & + .checker {
+    $color: lighten($secondary_color, 5%);
+    box-shadow: 0 0 0.4rem 2px inset $color;
+    background-color: lighten($secondary_color, 40%);
+
+    &::before {
+      content: '';
+      @include useFlexbox(none, center, center);
+      @include useSquareSize(60%);
+      transform: scale(1.2);
+      box-shadow: none;
+      background-color: lighten($secondary_color, 10%);
+    }
+  }
+}

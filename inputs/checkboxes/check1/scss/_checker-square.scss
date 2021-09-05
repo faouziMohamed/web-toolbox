@@ -1,0 +1,13 @@
+.checkbox-check.square {
+  .label-checker {
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+  }
+
+  .checker {
+    border-radius: 0.5rem;
+    &::before {
+      border-radius: 0.2rem;
+    }
+  }
+}
