@@ -3,10 +3,14 @@ import { UserAddModal } from './userAddModal.js';
 export const userAdd = () => {
   const openModalBtn = document.querySelector('#openAddModal');
   const modalContainer = document.querySelector('#admin-modal');
+  const contentRoot = document.querySelector('.main-content-root');
+
+  if (!openModalBtn || !modalContainer || !contentRoot) return;
   const modal = new UserAddModal();
   const [closeBtn, submitBtn] = [modal.getCancelBtn(), modal.getAddUserBtn()];
 
   openModalBtn.addEventListener('click', () => {
+    contentRoot.classList.add(['prevent-scroll'], ['blur']);
     modalContainer.classList.remove('hidden');
     modalContainer.append(modal.getDialog());
     useFormValidation();
@@ -15,6 +19,7 @@ export const userAdd = () => {
   closeBtn.addEventListener('click', () => {
     modalContainer.classList.add('hidden');
     modalContainer.replaceChildren();
+    contentRoot.classList.remove(['prevent-scroll'], ['blur']);
   });
   submitBtn.addEventListener('click', handleAddNewUser);
   submitBtn.disabled = true;
@@ -114,6 +119,7 @@ function handleInvalidInput(input, errorElement, message) {
 
 function handleValidInput(input, errorElement) {
   input.classList.remove('is-invalid');
+  input.classList.add('is-valid');
   input.setCustomValidity('');
   errorElement.textContent = '✔';
   const areInputsValid = checkInputsValidity();

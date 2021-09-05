@@ -44,6 +44,8 @@ export class UserTableRow {
   constructor(userData = dataFormat) {
     this.userData = userData;
     this.lang = localStorage.getItem('lang') || 'en';
+    this.checkbox = null;
+    this.nameColumn = null;
     this.create();
   }
 
@@ -70,6 +72,19 @@ export class UserTableRow {
 
   getDataEmail() {
     return this.userData.email;
+  }
+
+  getDataRole() {
+    return this.userData.role;
+  }
+
+  getInputCheckBox() {
+    return this.checkbox;
+  }
+
+  attachEventTo(elementName = '', event = 'click', callback = () => {}) {
+    if (!elementName) throw new Error('No element name provided!');
+    this[elementName].addEventListener(event, callback);
   }
 
   createRow() {
@@ -126,9 +141,11 @@ export class UserTableRow {
   }
 
   createCheckboxCol() {
-    const input = newElement('input', {
+    this.checkbox = newElement('input', {
       type: 'checkbox',
-      class: 'hidden checkbox__input',
+      class: 'hidden checkbox__input user-row-checkbox',
+      'data-id': this.userData.id,
+      'data-cin': this.userData.cin,
     });
 
     const checker = newElement('span', {
@@ -139,7 +156,7 @@ export class UserTableRow {
     const container = newElement(
       'div',
       { class: 'checkbox__input-container' },
-      [input, checker],
+      [this.checkbox, checker],
     );
 
     const label = newElement('label', { class: 'checkbox__label' }, [
@@ -154,27 +171,33 @@ export class UserTableRow {
   }
 
   createNameCol(ROOT = '') {
-    const fullname = newElement('p', { class: 'user-fullname' }, [
-      this.userData.name,
-    ]);
+    const fullname = newElement(
+      'p',
+      { class: 'user-fullname', 'data-id': this.userData.id },
+      [this.userData.name],
+    );
 
     const img = newElement('img', {
       src: `${ROOT}/images/users/user.svg`,
       alt: `${this.userData.name}'s profile`,
+      'data-id': this.userData.id,
       width: '50',
       class: 'result__name__img',
     });
 
-    const profile = newElement('div', { class: 'result__name__profile' }, [
-      img,
-    ]);
+    const profile = newElement(
+      'div',
+      { class: 'result__name__profile', 'data-id': this.userData.id },
+      [img],
+    );
 
-    const div = newElement('div', { class: 'result__name' }, [
-      profile,
-      fullname,
-    ]);
+    this.nameColumn = newElement(
+      'div',
+      { class: 'result__name', 'data-id': this.userData.id },
+      [profile, fullname],
+    );
 
-    return this.createColumn(div);
+    return this.createColumn(this.nameColumn);
   }
 
   createColumn(data = null) {
