@@ -301,7 +301,6 @@
   content: '';
   @include useFlexbox(none, none, center);
   transform: translateX(1.3rem);
-  // border: 1px solid lighten(adjust-hue(v.$secondary_color, 10deg), 5%);
   background-color: lighten(v.$secondary_color, 10%);
   box-shadow: 0 0 0.1rem 1px lighten(adjust-hue(v.$secondary_color, 10deg), 3%);
 }
@@ -309,9 +308,8 @@
 .form-btn-container {
   display: flex;
   justify-content: flex-end;
-  // flex-direction: row-reverse;
   padding-block-start: 0.5rem;
-  border-block-start: 1px solid rgb(213, 213, 213);
+  gap: 0.3rem;
 }
 
 @media (max-width: 490px) {

@@ -93,11 +93,6 @@
   font-size: 0.98rem;
   padding: 0.7rem 1.7rem;
 }
-.invalid-feedback {
-  display: none;
-  padding-block: 0.5rem 0.5rem;
-  color: v.$danger_color;
-}
 
 .action {
   @include useFlexbox();

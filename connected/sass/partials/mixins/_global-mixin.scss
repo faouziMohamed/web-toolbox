@@ -94,7 +94,9 @@
   z-index: v.$zindex_modal_level_one;
   transition: background-color 0.01s ease;
 }
-
+.transparent-color {
+  color: transparent;
+}
 @mixin useFormFloating() {
   .form-floating {
     position: relative;
@@ -130,8 +132,17 @@
         content: ' *';
         color: #f00;
       }
-    }
 
+      @at-root .invalid-feedback {
+        opacity: 0;
+        padding-block: 0.5rem 0.5rem;
+        color: v.$danger_color;
+      }
+
+      @at-root .is-invalid ~ .invalid-feedback {
+        opacity: 1;
+      }
+    }
     &__label {
       position: absolute;
       transform-origin: 0 0;
@@ -215,11 +226,10 @@
   box-shadow: 0 0 0.1rem 0.01rem $color;
   border: 1px solid lighten($color, 10%);
   background-color: $color;
-  &:hover,
-  &:focus {
+  :is(&:hover, &:focus):not(:disabled) {
     background-color: darken($color, 7%);
   }
-  &:active {
+  &:active:not(:disabled) {
     border-color: lighten($color, 30%);
     opacity: 0.7;
   }

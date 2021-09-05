@@ -41,7 +41,7 @@ export class UserAddModal {
     this.createFormFieldset();
     this.createFormButtonContainer();
 
-    this.form = newElement('form', { class: 'form' }, [
+    this.form = newElement('form', { class: 'form', id: 'add-new-user-form' }, [
       this.fieldsetFormInputs,
       this.formBtnConainer,
     ]);
@@ -70,14 +70,17 @@ export class UserAddModal {
       placeholder: 'Username',
       id: 'username',
       required: true,
+      pattern: '[a-z0-9]{3,}',
+      className: 'unique',
     });
 
     const emailFormFloating = this.createFormFloating({
       type: 'email',
       name: 'email',
-      placeholder: 'Email',
+      placeholder: 'Email Address',
       id: 'email',
       required: true,
+      className: 'unique',
     });
 
     const inputCheckboxContainer = this.createInputCheckboxContainer();
@@ -94,13 +97,13 @@ export class UserAddModal {
   createFormButtonContainer() {
     this.addUserBtn = newElement(
       'button',
-      { class: 'btn btn-secondary btn--ok', type: 'submit' },
+      { class: 'btn btn-secondary btn--ok', type: 'submit', id: 'btn-submit' },
       'Add user',
     );
 
     this.cancelBtn = newElement(
       'button',
-      { class: 'btn btn--cancel btn-nobg' },
+      { class: 'btn btn--cancel btn-nobg', id: 'btn-cancel' },
       'Cancel',
     );
 
@@ -114,11 +117,13 @@ export class UserAddModal {
     const { checkSwither: adminCheckboxSwitcher, input: adminInput } =
       this.createCheckboxSwitcher({
         label: 'Admin',
+        name: 'isAdmin',
       });
 
     const { checkSwither: candidateCheckboxSwitcher, input: candidateInput } =
       this.createCheckboxSwitcher({
         label: 'Candidate',
+        name: 'isCandidate',
       });
     this.adminInput = adminInput;
     this.candidateInput = candidateInput;
@@ -128,8 +133,8 @@ export class UserAddModal {
     ]);
   }
 
-  createCheckboxSwitcher({ label }) {
-    const { container, input } = this.createSwitchContainer();
+  createCheckboxSwitcher({ label, name }) {
+    const { container, input } = this.createSwitchContainer({ name });
     const labelTxt = newElement('span', { class: 'label-switch--txt' }, label);
     const labelSwitch = newElement('label', { class: 'label-switch' }, [
       container,
@@ -143,11 +148,12 @@ export class UserAddModal {
     return { checkSwither, input };
   }
 
-  createSwitchContainer() {
+  createSwitchContainer({ name }) {
     const input = this.createFormInput({
       type: 'checkbox',
       id: 'check-admin',
       className: 'hidden checkbox-slider',
+      name,
     });
     const slider = newElement('span', { class: 'slider' });
     const container = newElement('div', { class: 'input-container switch' }, [
@@ -164,6 +170,8 @@ export class UserAddModal {
     placeholder = '',
     id,
     required = false,
+    pattern = null,
+    className = '',
   }) {
     const input = this.createFormInput({
       type,
@@ -171,6 +179,8 @@ export class UserAddModal {
       placeholder,
       id,
       required,
+      pattern,
+      className,
     });
 
     const label = newElement(
@@ -182,9 +192,11 @@ export class UserAddModal {
     let invalidFeedback;
 
     if (required)
-      invalidFeedback = newElement('div', { class: 'invalid-feedback' }, [
-        `${placeholder} is required`,
-      ]);
+      invalidFeedback = newElement(
+        'div',
+        { class: 'invalid-feedback transparent-color' },
+        [`${placeholder} is required`],
+      );
 
     return newElement('div', { class: 'form-floating' }, [
       input,
@@ -200,21 +212,19 @@ export class UserAddModal {
     id,
     required = false,
     className = 'form-floating__input',
+    pattern = null,
   }) {
-    return newElement('input', {
-      type,
-      name,
-      placeholder,
-      id,
-      required: required,
-      class: className,
-    });
+    const classname = `${className} form-control form-floating__input`;
+    const opt = { type, name, placeholder, id, required, class: classname };
+    if (pattern) opt.pattern = pattern;
+
+    return newElement('input', { ...opt });
   }
 }
 
 /*
 <div class="add-user-modal">
-  <form class="admin-modal__form">
+  <form class="admin-modal__form" id="add-new-user-form">
     <fieldset class="form-inputs">
       <div class="form-floating">
         <input
