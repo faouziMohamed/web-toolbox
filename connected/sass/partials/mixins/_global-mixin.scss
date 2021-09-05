@@ -93,7 +93,14 @@
   @include useSquareSize(100%);
   z-index: v.$zindex_modal_level_one;
   transition: background-color 0.01s ease;
+
+  @media (max-height: 530px) {
+    justify-content: flex-start;
+    overflow: auto;
+    padding-block-start: 1rem;
+  }
 }
+
 .transparent-color {
   color: transparent;
 }
