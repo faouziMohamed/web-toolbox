@@ -89,7 +89,7 @@
 
 %modalContainerDefault {
   @include useFlexbox(column);
-  @include usePosition(absolute, 0, 0);
+  @include usePosition(fixed, 0, 0);
   @include useSquareSize(100%);
   z-index: v.$zindex_modal_level_one;
   transition: background-color 0.01s ease;

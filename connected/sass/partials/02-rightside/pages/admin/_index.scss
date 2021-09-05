@@ -161,33 +161,6 @@
   position: relative;
   @include useFlexbox(column);
   @include useSquareSize(4rem);
-
-  &__checkbox {
-    cursor: pointer;
-    width: 1.3rem;
-    height: 1.5rem;
-    z-index: v.$zindex_base_level;
-  }
-
-  &__bg {
-    @include useSquareSize(2.5rem);
-    @include usePosition(absolute);
-    background-color: rgba(v.$primary_color, 0.2);
-    border-radius: 50%;
-    display: none;
-  }
-
-  &__overlay {
-    @include usePosition(absolute);
-    @include useSquareSize(100%);
-    cursor: pointer;
-  }
-
-  &:hover {
-    .user-input__bg {
-      display: block;
-    }
-  }
 }
 
 .result__name {

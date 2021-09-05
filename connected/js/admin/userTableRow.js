@@ -128,17 +128,27 @@ export class UserTableRow {
   createCheckboxCol() {
     const input = newElement('input', {
       type: 'checkbox',
-      id: `result__checkbox-${this.userData.id}`,
-      class: 'user-input__checkbox result__checkbox select-user',
+      class: 'hidden checkbox__input',
     });
 
-    const label = newElement('label', {
-      for: `result__checkbox-${this.userData.id}`,
+    const checker = newElement('span', {
+      class: 'checkbox__checker',
+      tabindex: '0',
     });
 
-    const bg = newElement('div', { class: 'user-input__bg' });
+    const container = newElement(
+      'div',
+      { class: 'checkbox__input-container' },
+      [input, checker],
+    );
 
-    const div = newElement('div', { class: 'user-input' }, [bg, label, input]);
+    const label = newElement('label', { class: 'checkbox__label' }, [
+      container,
+    ]);
+
+    const checkboxWrapper = newElement('div', { class: 'checkbox' }, [label]);
+
+    const div = newElement('div', { class: 'user-input' }, [checkboxWrapper]);
 
     return this.createColumn(div);
   }
@@ -173,16 +183,22 @@ export class UserTableRow {
 }
 
 /*
+
 <tr class='users-table__row search-results result'>
     <td class='users-table__col result__col'>
       <div class='user-input'>
-        <div class='user-input__bg'></div>
-        <label for='result__checkbox' class='user-input__overlay'></label>
-        <input
-          type='checkbox'
-          id='result__checkbox'
-          class='user-input__checkbox result__checkbox select-user'
-        />
+        <div class="checkbox">
+          <label class="checkbox__label">
+            <div class="checkbox__input-container">
+              <input
+                tabindex="0"
+                type="checkbox"
+                class="hidden checkbox__input"
+              />
+              <span tabindex="0" class="checkbox__checker"></span>
+            </div>
+          </label>
+        </div>      
       </div>
     </td>
     <td class='users-table__col result__col'>
