@@ -1,10 +1,11 @@
+import { getEmailRegex, getUsernameRegex, strip } from '../utils/dom-utils.js';
+import { AlertDialog } from '../utils/modals/alerte-dialog.js';
 import { UserAddModal } from './userAddModal.js';
 
 export const userAdd = () => {
   const openModalBtn = document.querySelector('#openAddModal');
   const modalContainer = document.querySelector('#admin-modal');
   const contentRoot = document.querySelector('.main-content-root');
-
   if (!openModalBtn || !modalContainer || !contentRoot) return;
   const modal = new UserAddModal();
   const [closeBtn, submitBtn] = [modal.getCancelBtn(), modal.getAddUserBtn()];
@@ -26,15 +27,49 @@ export const userAdd = () => {
 };
 
 function handleAddNewUser(e) {
-  const form = document.querySelector('#add-new-user-form');
-  console.log(form.elements['isAdmin'].checked);
+  e.preventDefault();
+  const data = readFormData();
+  console.log(data);
+  if (checkInputsValidity()) console.log('valid');
+  else {
+    const msgError = 'Please fill all the required fields!';
+    showErrorDialog({ modalText: msgError });
+  }
+}
 
+function readFormData() {
+  const form = document.querySelector('#add-new-user-form');
+  if (!form) {
+    const msgError =
+      'An error occured, please contact a developer to resolve it!';
+    showErrorDialog({ modalText: msgError });
+    return;
+  }
   const formData = new FormData(form);
-  // console.log(form);
-  // formData.forEach((value, key) => {
-  //   console.log(key, getUsernameRegex);
-  // });
-  // e.preventDefault();
+  const data = {};
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
+
+  data.isAdmin = form.elements.isAdmin.checked;
+  data.isCandidate = form.elements.isCandidate.checked;
+  return data;
+}
+
+function showErrorDialog({
+  modalType = 'error',
+  modalTitle = 'Error',
+  modalOkBtnText = 'Ok',
+  modalText = 'An error occured, please retry!',
+}) {
+  const options = { modalType, modalTitle, modalOkBtnText, modalText };
+
+  const dialog = new AlertDialog({ ...options });
+  const dialogParent = dialog.getDialogWithParent();
+  dialog.attachEventsTo('btnOk', 'click', () => {
+    dialogParent.remove(dialogParent);
+  });
+  document.querySelector('.main-content')?.append(dialogParent);
 }
 
 function useFormValidation() {
@@ -98,10 +133,9 @@ function handleInputWithRegexValueError(input, errorElement, regex) {
 }
 
 function checkInputsValidity() {
+  const inputs = document.querySelectorAll('.form-control:not(.optional)');
   const isValid = (input) =>
-    strip(input.value) !== '' && !input.classList.contains('is-valid');
-
-  const inputs = document.querySelectorAll('.form-control');
+    strip(input.value) !== '' && input.classList.contains('is-valid');
   return [...inputs].every(isValid);
 }
 
@@ -112,9 +146,11 @@ function getInputAndErorrElement(id) {
 }
 
 function handleInvalidInput(input, errorElement, message) {
+  input.classList.remove('is-valid');
   input.classList.add('is-invalid');
   errorElement.textContent = message;
   input.setCustomValidity(message);
+  document.querySelector('#btn-submit').disabled = true;
 }
 
 function handleValidInput(input, errorElement) {
@@ -126,16 +162,4 @@ function handleValidInput(input, errorElement) {
   if (areInputsValid) {
     document.querySelector('#btn-submit').disabled = false;
   }
-}
-
-function getEmailRegex() {
-  return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-}
-
-function getUsernameRegex() {
-  return /^[a-z][a-z0-9_]{3,}$/;
-}
-
-function strip(str) {
-  return str.replace(/\s+/g, '');
 }

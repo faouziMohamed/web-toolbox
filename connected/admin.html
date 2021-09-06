@@ -268,6 +268,12 @@
                 </ul>
               </div>
               <div class="tab-window">
+                <div class="preloader" id="tabwindow-preloader">
+                  <div class="loading">
+                    <div class="loading__spinner"></div>
+                    <span class="loading__text">Retrieving data...</span>
+                  </div>
+                </div>
                 <div class="tab-window__row">
                   <div class="user-research">
                     <i class="search-icon far fa-search"></i>
@@ -351,64 +357,7 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody class="users-table-body">
-                      <tr class="users-table__row search-results result">
-                        <td class="users-table__col result__col">
-                          <div class="user-input">
-                            <div class="checkbox">
-                              <label class="checkbox__label">
-                                <div class="checkbox__input-container">
-                                  <input
-                                    tabindex="0"
-                                    type="checkbox"
-                                    class="hidden checkbox__input"
-                                  />
-                                  <span
-                                    tabindex="0"
-                                    class="checkbox__checker"
-                                  ></span>
-                                </div>
-                              </label>
-                            </div>
-                          </div>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <p class="username">faouzi</p>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <div class="result__name">
-                            <div class="result__name__profile">
-                              <img
-                                class="result__name__img"
-                                src="/images/users/user.svg"
-                                alt="Faouzi Mohamed's profile"
-                                width="50"
-                              />
-                            </div>
-                            <p class="user-fullname">Faouzi Mohamed</p>
-                          </div>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <p class="result__email">faouzimohamed@email.me</p>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <p class="result__role">admin</p>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <p class="result__activation">Activate</p>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <p class="result__accountType">Candidate</p>
-                        </td>
-                        <td class="users-table__col result__col">
-                          <p class="result__status">Has vote</p>
-                        </td>
-
-                        <td class="users-table__col result__col">
-                          <p class="result__cin">15660</p>
-                        </td>
-                      </tr>
-                    </tbody>
+                    <tbody class="users-table-body"></tbody>
                   </table>
                 </div>
               </div>

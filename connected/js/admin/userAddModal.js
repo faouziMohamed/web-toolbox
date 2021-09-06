@@ -1,4 +1,9 @@
-import { newElement } from '../utils/dom-utils.js';
+import {
+  getEmailRegex,
+  getNameRegex,
+  getUsernameRegex,
+  newElement,
+} from '../utils/dom-utils.js';
 
 export class UserAddModal {
   constructor() {
@@ -41,46 +46,50 @@ export class UserAddModal {
     this.createFormFieldset();
     this.createFormButtonContainer();
 
-    this.form = newElement('form', { class: 'form', id: 'add-new-user-form' }, [
-      this.fieldsetFormInputs,
-      this.formBtnConainer,
-    ]);
+    this.form = newElement(
+      'form',
+      { class: 'add-user-form', id: 'add-new-user-form' },
+      [this.fieldsetFormInputs, this.formBtnConainer],
+    );
   }
 
   createFormFieldset() {
-    const firstNameFormFloating = this.createFormFloating({
+    const firstNameFormFloating = UserAddModal.createFormFloating({
       type: 'text',
       name: 'firstname',
       placeholder: 'First Name',
       id: 'firstname',
+      pattern: getNameRegex().source,
       required: true,
     });
 
-    const lastNameFormFloating = this.createFormFloating({
+    const lastNameFormFloating = UserAddModal.createFormFloating({
       type: 'text',
       name: 'lastname',
       placeholder: 'Last Name',
       id: 'lastname',
       required: true,
+      pattern: getNameRegex().source,
     });
 
-    const usernameFormFloating = this.createFormFloating({
+    const usernameFormFloating = UserAddModal.createFormFloating({
       type: 'text',
       name: 'username',
       placeholder: 'Username',
       id: 'username',
       required: true,
-      pattern: '[a-z0-9]{3,}',
+      pattern: getUsernameRegex().source,
       className: 'unique',
     });
 
-    const emailFormFloating = this.createFormFloating({
+    const emailFormFloating = UserAddModal.createFormFloating({
       type: 'email',
       name: 'email',
       placeholder: 'Email Address',
       id: 'email',
       required: true,
       className: 'unique',
+      pattern: getEmailRegex().source,
     });
 
     const inputCheckboxContainer = this.createInputCheckboxContainer();
@@ -115,15 +124,17 @@ export class UserAddModal {
 
   createInputCheckboxContainer() {
     const { checkSwither: adminCheckboxSwitcher, input: adminInput } =
-      this.createCheckboxSwitcher({
+      UserAddModal.createCheckboxSwitcher({
         label: 'Admin',
         name: 'isAdmin',
+        id: 'admin-checkbox',
       });
 
     const { checkSwither: candidateCheckboxSwitcher, input: candidateInput } =
-      this.createCheckboxSwitcher({
+      UserAddModal.createCheckboxSwitcher({
         label: 'Candidate',
         name: 'isCandidate',
+        id: 'candidate-checkbox',
       });
     this.adminInput = adminInput;
     this.candidateInput = candidateInput;
@@ -133,8 +144,11 @@ export class UserAddModal {
     ]);
   }
 
-  createCheckboxSwitcher({ label, name }) {
-    const { container, input } = this.createSwitchContainer({ name });
+  static createCheckboxSwitcher({ label, name, id }) {
+    const { container, input } = UserAddModal.createSwitchContainer({
+      name,
+      id,
+    });
     const labelTxt = newElement('span', { class: 'label-switch--txt' }, label);
     const labelSwitch = newElement('label', { class: 'label-switch' }, [
       container,
@@ -148,11 +162,11 @@ export class UserAddModal {
     return { checkSwither, input };
   }
 
-  createSwitchContainer({ name }) {
-    const input = this.createFormInput({
+  static createSwitchContainer({ name, id }) {
+    const input = UserAddModal.createFormInput({
       type: 'checkbox',
-      id: 'check-admin',
-      className: 'hidden checkbox-slider',
+      id,
+      className: 'hidden checkbox-slider optional',
       name,
     });
     const slider = newElement('span', { class: 'slider' });
@@ -164,7 +178,7 @@ export class UserAddModal {
     return { container, input };
   }
 
-  createFormFloating({
+  static createFormFloating({
     type = 'text',
     name = '',
     placeholder = '',
@@ -173,7 +187,7 @@ export class UserAddModal {
     pattern = null,
     className = '',
   }) {
-    const input = this.createFormInput({
+    const input = UserAddModal.createFormInput({
       type,
       name,
       placeholder,
@@ -205,7 +219,7 @@ export class UserAddModal {
     ]);
   }
 
-  createFormInput({
+  static createFormInput({
     type = 'text',
     name = '',
     placeholder = '',
