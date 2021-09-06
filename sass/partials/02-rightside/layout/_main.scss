@@ -2,7 +2,7 @@
 @use '../../mixins/global-mixin' as *;
 
 .main-page {
-  @include useFlexbox(column, $jt: 0, $al: 0);
+  @include useFlexbox(column, $jt: none, $al: none);
   flex: 1 1 auto;
   background-color: #fffdfd;
   overflow: hidden;

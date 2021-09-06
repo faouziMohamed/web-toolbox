@@ -10,6 +10,7 @@
   font-weight: 600;
   font-family: v.$secondary_font;
 }
+
 body,
 html {
   height: 100%;
@@ -21,12 +22,14 @@ body {
   background-position: center;
   background-size: cover;
 }
+
 .page-overlay {
   opacity: 0.4;
   @include useSquareSize(100%);
   @include usePosition(absolute, 0, 0);
   background-color: darken(v.$primary_color, 90%);
 }
+
 .root {
   @include useFlexbox(column, none, none);
   @include usePosition(absolute, 0, 0);
@@ -65,11 +68,12 @@ body {
 }
 
 .signup-btn {
+  background-color: rgba(v.$primary_color, 90%);
   border-color: darken(v.$primary_color, 2%);
 }
 
 .signin-btn {
-  border-color: darken(v.$secondary_color, 2%);
+  background-color: lighten(v.$secondary_color, 10%);
 }
 
 .btn-link {
@@ -91,10 +95,8 @@ body {
     &__title {
       font-size: 4rem;
       font-weight: 600;
-      // font-family: chilanka;
     }
     &__text {
-      // font-weight: 600;
       text-align: start;
     }
   }
@@ -105,6 +107,7 @@ body {
     @include useFlexbox(column, flex-start);
   }
 }
+
 .col-1-content {
   padding-inline: 1.5rem;
 }
@@ -131,6 +134,7 @@ body {
       padding-inline-end: 0.5rem;
       color: v.$primary_color;
     }
+
     &.has-love {
       color: rgb(2, 0, 145);
       font-weight: 600;

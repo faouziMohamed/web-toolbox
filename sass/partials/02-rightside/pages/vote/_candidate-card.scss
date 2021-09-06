@@ -17,7 +17,7 @@
 }
 
 .candidate-card {
-  @include useFlexbox(column, $al: center, $jt: 0, $inline: 1);
+  @include useFlexbox(column, $al: center, $jt: none, $inline: 1);
   @extend %radius-6rem;
   font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
@@ -31,7 +31,7 @@
   padding-block-end: 0.5rem;
 
   &__figure {
-    @include useFlexbox(column, center, 0);
+    @include useFlexbox(column, center, none);
     padding: 0.5rem;
     @extend %radius-6rem;
     flex: 1 0 100%;
@@ -89,7 +89,7 @@
 }
 
 .candidate-description {
-  @include useFlexbox(column, $al: center, $jt: 0);
+  @include useFlexbox(column, $al: center, $jt: none);
   border-block-end: 1px solid #7e7c7c;
 
   &__skills {

@@ -1,0 +1,38 @@
+@use '../../variables' as v;
+@use '../../mixins/global-mixin' as *;
+
+.preloader {
+  position: absolute;
+  @include useFlexbox(none);
+  @include usePosition(absolute, 0, 0);
+  @include useSquareSize(100%);
+  background-color: rgb(255, 255, 255);
+  z-index: v.$zindex_level_one;
+}
+
+.loading {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.3125rem;
+  font-size: 1rem;
+  padding-block: 1rem;
+  font-weight: 600;
+}
+.loading__spinner {
+  display: inline-block;
+  animation-name: rotation;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  border-color: black transparent black transparent;
+  border-radius: 20px;
+  border-style: double;
+  border-width: 3px;
+  @include useSquareSize(1.5rem);
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate(360deg);
+  }
+}

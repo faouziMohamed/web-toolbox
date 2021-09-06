@@ -42,20 +42,9 @@
   }
 }
 
-@mixin useSquareSize($size: 1em) {
+@mixin useSquareSize($size) {
   width: $size;
   height: $size;
-}
-
-@mixin userCenter($dir, $jt, $al) {
-  @include useFlexbox($dir, $jt, $al);
-}
-@mixin useVerticalCenter() {
-  @include userCenter($dir: row, $jt: 0, $al: center);
-}
-
-@mixin useHorizontalCenter() {
-  @include userCenter($dir: column, $jt: center, $al: 0);
 }
 
 @mixin useBorderRadius($radius: 0) {
@@ -104,6 +93,7 @@
 .transparent-color {
   color: transparent;
 }
+
 @mixin useFormFloating() {
   .form-floating {
     position: relative;

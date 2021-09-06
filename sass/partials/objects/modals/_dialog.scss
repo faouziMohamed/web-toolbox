@@ -1,0 +1,152 @@
+@use '../../mixins/global-mixin' as *;
+@use '../../variables' as v;
+
+%useSameFlexbox {
+  @include useFlexbox();
+}
+
+/* 
+<div class="dialog-parent">
+  <div class="modal">
+    <h2 class="modal-title">Confirm</h2>
+    <div class="modal-body">
+      <p class="modal-text">Please make sure all field correctly filled.</p>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-btn btn-primary modal-ok">OK</button>
+    </div>
+  </div>
+</div>
+*/
+
+.alert-dialog-parent {
+  @include usePosition(absolute, 0, 0);
+  @include useFlexbox;
+  @include useSquareSize(100%);
+  background-color: #01022c7c;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.alert-dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(251, 255, 252);
+  max-width: 300px;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  box-shadow: -4px 4px 2px #c4c8c6;
+  color: #0b4546;
+  background-image: linear-gradient(
+    to bottom right,
+    #eff4f1,
+    #ffffff,
+    rgb(255, 255, 255)
+  );
+  border: 1px solid #edebeba8;
+  font-family: v.$secondary_font;
+  font-weight: 500;
+}
+
+.alert-dialog-title {
+  border-bottom: 1px solid #02192d08;
+}
+
+.alert-dialog-body {
+  padding-block: 0.4rem;
+}
+
+.alert-dialog-btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.alert-dialog-btn {
+  display: block;
+  padding: 0.3rem;
+  min-width: 0.5rem;
+  width: 9em;
+  border-radius: 0.8rem;
+  border: 1px solid #29282824;
+  background-color: #fbfcf978;
+  color: #1a2a2a;
+  font-size: 0.9rem;
+  font-weight: 900;
+  font-family: inherit;
+  cursor: pointer;
+
+  transition: transform 0.1ms ease-in;
+  &:hover {
+    box-shadow: -2px 1px 2px #00000078;
+  }
+
+  &:active {
+    transform: translate(0, -3%);
+    box-shadow: -1px 1px 4px black;
+  }
+}
+
+.btn-success {
+  background-color: #57ff89;
+  background-image: linear-gradient(
+    to bottom left,
+    #08a336de,
+    #57ff89,
+    #06c83ff2
+  );
+  box-shadow: -2px 1px 2px #00000078;
+  color: #002426ed;
+
+  &:hover {
+    background-color: #18e655;
+    background-image: linear-gradient(
+      to bottom left,
+      #05ff15de,
+      #02f940,
+      #048229f2
+    );
+  }
+}
+
+.btn-cancel {
+  background-image: linear-gradient(
+    to bottom left,
+    #ffffff61,
+    #c9ccb9d4,
+    #ffffff63
+  );
+  color: #464444;
+
+  &:hover {
+    background-image: linear-gradient(
+      to bottom left,
+      #929488d4,
+      #c9ccb9d4,
+      #99998ed4
+    );
+    color: black;
+  }
+}
+
+.btn-error {
+  background-color: #ff578f;
+  background-image: linear-gradient(
+    to bottom left,
+    #a30836de,
+    #ff577b,
+    #c80640f2
+  );
+  box-shadow: -2px 1px 2px #00000078;
+  color: #eaf7f8ed;
+
+  &:hover {
+    background-color: #fc0037;
+    background-image: linear-gradient(
+      to bottom left,
+      #8c001ede,
+      #fc0037,
+      #a50249f2
+    );
+  }
+}

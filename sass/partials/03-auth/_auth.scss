@@ -162,6 +162,7 @@
       #e31702 50%,
       #370106 90%
     );
+
     &:hover,
     &:active {
       background-color: #b70303;
@@ -175,6 +176,7 @@
         #a40000 80%
       );
     }
+
     &:active {
       background-image: linear-gradient(
         to top left,
@@ -195,10 +197,12 @@
       rgba(0, 0, 139, 0.179) 100%
     );
   }
+
   .left-side {
     padding-block-start: 1rem;
     justify-content: flex-start;
   }
+
   .right-side {
     align-items: center;
     flex-basis: 50%;

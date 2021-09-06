@@ -6,13 +6,16 @@
     rgb(255, 255, 255) 50%,
     rgba(0, 0, 139, 0.323) 100%
   );
+
   &__content {
     height: 100%;
     @include useFlexbox(column, center, center);
+
     &__header {
       align-items: center;
     }
   }
+
   .page-header {
     text-align: center;
   }
