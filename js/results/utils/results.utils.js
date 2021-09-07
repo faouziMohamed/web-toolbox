@@ -33,7 +33,7 @@ export function getOptions(opt = {}) {
       axisTicks: { show: true },
       labels: {
         show: true,
-        formatter: function (val) {
+        formatter(val) {
           return val;
         },
       },
@@ -43,8 +43,8 @@ export function getOptions(opt = {}) {
       axisTicks: { show: false },
       labels: {
         show: true,
-        formatter: function (val) {
-          return val + '%';
+        formatter(val) {
+          return `${val}%`;
         },
       },
     },

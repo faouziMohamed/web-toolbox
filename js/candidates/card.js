@@ -47,6 +47,7 @@ export class CandidateCard {
     }
     return this.candidateCard;
   }
+
   getPicturePath() {
     return this.picturePath;
   }
@@ -54,6 +55,7 @@ export class CandidateCard {
   getDataName() {
     return this.data.name;
   }
+
   getDataSkills() {
     return this.skills;
   }
@@ -65,6 +67,7 @@ export class CandidateCard {
   getDataBio() {
     return this.data.description[this.lang].details;
   }
+
   getDataDepositionDate() {
     return this.data.description.depositionDate;
   }
@@ -106,6 +109,7 @@ export class CandidateCard {
       [this.imageWrapper, this.candidateDescription],
     );
   }
+
   createVoteButton() {
     const voteText = this.metadataLabels[this.lang].voteNow;
     this.voteButton = newElement(
@@ -250,4 +254,4 @@ export class CandidateCard {
   </figure>
   <button class="btn vote-btn btn-primary">Vote now</button>
 </div>
-**/
+* */
