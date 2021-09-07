@@ -76,11 +76,11 @@ function useCheckBoxAll() {
   }
 }
 
-export const getUsersData = async (ROOT = '') => {
+export async function getUsersData(ROOT = '') {
   const users = await fetch(`${ROOT}/api/users/data.json`);
   const { data } = await users.json();
   return data;
-};
+}
 
 function changeActiveButton(e) {
   const activeBtn = document.querySelector('.tab-active');

@@ -1,0 +1,44 @@
+Arguments: 
+  /home/faouzi/.nvm/versions/node/v14.17.3/bin/node /home/faouzi/.nvm/versions/node/v14.17.3/bin/yarn add -d prettier eslint eslint-config-airbnb-base eslint-config-prettier eslint-import-resolver-babel-module eslint-plugin-import eslint-plugin-prettier eslint-plugin-promise eslint-plugin-simple-import-sort stylelint stylelint-a11y stylelint-config-prettier stylelint-config-standard stylelint-group-selectors stylelint-order stylelint-prettier
+
+PATH: 
+  /home/faouzi/bin:/u01/app/oracle/product/11.2.0/xe/bin:/home/faouzi/.nvm/versions/node/v14.17.3/bin:/home/faouzi/bin:/u01/app/oracle/product/11.2.0/xe/bin:/home/faouzi/bin:/u01/app/oracle/product/11.2.0/xe/bin:/home/faouzi/anaconda3/bin:/home/faouzi/anaconda3/condabin:/home/faouzi/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.17.3
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/faouzi/Projects/Web/Static/web-toolbox/package.json: Unexpected token } in JSON at position 466
+      at JSON.parse (<anonymous>)
+      at /home/faouzi/.nvm/versions/node/v14.17.3/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/home/faouzi/.nvm/versions/node/v14.17.3/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /home/faouzi/.nvm/versions/node/v14.17.3/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "web-toolbox",
+    "version": "1.0.0",
+    "repository": "https://github.com/faouziMohamed/web-toolbox.git",
+    "author": "Faouzi Mohamed <57812398+faouziMohamed@users.noreply.github.com>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+      "upg": "yarn upgrade --latest",
+      "lint": "eslint ./src --ext js --fix --cache",
+      "csslint": "stylelint ./src/**/*.scss --fix --cache",
+      "format": "prettier  --write './src/**/*.{js,scss,json,html}'",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -150,7 +150,7 @@ export class AlertDialog {
 
   #checkArgs(elementName, events, callbacks) {
     if (!elementName) {
-      let msgError =
+      const msgError =
         `Expecting elementName to be one of ` +
         `'${this.elements.join(', ')}', but got '${elementName}'`;
       throw new Error(msgError);

@@ -16,7 +16,7 @@ async function draw({ opt, chartContainer }) {
     ...opt,
   });
 
-  let chart = new ApexCharts(chartContainer, options);
+  const chart = new ApexCharts(chartContainer, options);
   chart.render();
 }
 export async function drawChart() {

@@ -89,41 +89,41 @@ export class UserTableRow {
 
   createRow() {
     this.checkboxCol = this.createCheckboxCol();
-    this.usernameCol = this.createColumn(
+    this.usernameCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__username' }, [this.userData.username]),
     );
 
     this.nameCol = this.createNameCol();
 
-    this.emailCol = this.createColumn(
+    this.emailCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__email' }, [this.userData.email]),
     );
 
-    this.roleCol = this.createColumn(
+    this.roleCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__role' }, [
         capitalizeAll(this.userData.role),
       ]),
     );
 
-    this.activationCol = this.createColumn(
+    this.activationCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__activation' }, [
         dataMap[this.lang].accountActivated[this.userData.accountActivated],
       ]),
     );
 
-    this.accountTypeCol = this.createColumn(
+    this.accountTypeCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__account-type' }, [
         dataMap[this.lang].userType[this.userData.userType],
       ]),
     );
 
-    this.voteStatusCol = this.createColumn(
+    this.voteStatusCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__vote-status' }, [
         dataMap[this.lang].hasVoted[this.userData.hasVoted],
       ]),
     );
 
-    this.cinCol = this.createColumn(
+    this.cinCol = UserTableRow.createColumn(
       newElement('p', { class: 'result__cin' }, [this.userData.cin]),
     );
 
@@ -167,7 +167,7 @@ export class UserTableRow {
 
     const div = newElement('div', { class: 'user-input' }, [checkboxWrapper]);
 
-    return this.createColumn(div);
+    return UserTableRow.createColumn(div);
   }
 
   createNameCol(ROOT = '') {
@@ -197,10 +197,10 @@ export class UserTableRow {
       [profile, fullname],
     );
 
-    return this.createColumn(this.nameColumn);
+    return UserTableRow.createColumn(this.nameColumn);
   }
 
-  createColumn(data = null) {
+  static createColumn(data = null) {
     return newElement('td', { class: 'users-table__col result__col' }, [data]);
   }
 }

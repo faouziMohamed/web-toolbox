@@ -30,14 +30,13 @@ export async function useCandidateModal({
       modalContainerElment: modalContainer,
       openButtonElement: openModalButton,
       closeButtonElement: closeModalButton,
-      modal: modal,
+      modal,
     });
   });
 }
 
-export { CandidateDetails } from './details.js';
-
 export { CandidateCard } from './card.js';
+export { CandidateDetails } from './details.js';
 export { CandidateModal } from './modal.js';
 export {
   fetchAllCandidateDetails,

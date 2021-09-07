@@ -9,15 +9,18 @@ export class CandidateModal {
       console.log('Candidate Modal: ', error);
     }
   }
+
   getModal() {
     if (!this.modal) {
       this.createModal();
     }
     return this.modal;
   }
+
   getCloseButton() {
     return this.closeButton;
   }
+
   createModal() {
     this.createCloseButton();
     this.createCandidateModalProfile();

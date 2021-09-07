@@ -1,4 +1,5 @@
 import { capitalizeAll, newElement } from '../utils/dom-utils.js';
+
 const defaultArg = {
   id: -1,
   name: '',
@@ -38,6 +39,7 @@ export class CandidateDetails {
   create() {
     this.createCandidateRow();
   }
+
   getDataId() {
     return this.data.id;
   }
@@ -161,7 +163,7 @@ export class CandidateDetails {
   }
 
   createPositionStatus() {
-    const position = this.metadataLabels[this.lang].position;
+    const { position } = this.metadataLabels[this.lang];
     const description = this.data.description.position?.toUpperCase() || 'N/A';
     this.candidatePosition = newElement('p', { class: 'candidate-position' }, [
       `${position}: `,
@@ -218,7 +220,7 @@ export class CandidateDetails {
   }
 }
 
-//<div class='candidate-row'>
+// <div class='candidate-row'>
 //   <div class='candidate-row__overlay' tabindex='0' data-id='10190'>
 //     <div class='info-indicator-wrapper'>
 //       <div class='info-indicator' tabindex='-1'>
@@ -250,4 +252,4 @@ export class CandidateDetails {
 //       </span>
 //     </p>
 //   </div>
-//</div>
+// </div>

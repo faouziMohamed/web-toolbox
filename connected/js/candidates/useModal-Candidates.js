@@ -1,8 +1,8 @@
+import { newElement } from '../utils/dom-utils.js';
+import { CandidateCard } from './card.js';
 import { CandidateDetails } from './details.js';
 import { useCandidateModal } from './index.js';
 import { CandidateModal } from './modal.js';
-import { CandidateCard } from './card.js';
-import { newElement } from '../utils/dom-utils.js';
 
 export async function useCandidates() {
   await useCandidateModal({

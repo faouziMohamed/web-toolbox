@@ -2,10 +2,11 @@ import { getEmailRegex, getUsernameRegex, strip } from '../utils/dom-utils.js';
 import { AlertDialog } from '../utils/modals/alerte-dialog.js';
 import { UserAddModal } from './userAddModal.js';
 
-export const userAdd = () => {
+export const useAddUserModal = () => {
   const openModalBtn = document.querySelector('#openAddModal');
   const modalContainer = document.querySelector('#admin-modal');
   const contentRoot = document.querySelector('.main-content-root');
+
   if (!openModalBtn || !modalContainer || !contentRoot) return;
   const modal = new UserAddModal();
   const [closeBtn, submitBtn] = [modal.getCancelBtn(), modal.getAddUserBtn()];
@@ -42,8 +43,7 @@ function readFormData() {
   if (!form) {
     const msgError =
       'An error occured, please contact a developer to resolve it!';
-    showErrorDialog({ modalText: msgError });
-    return;
+    return showErrorDialog({ modalText: msgError });
   }
   const formData = new FormData(form);
   const data = {};
@@ -89,7 +89,7 @@ function useFormValidation() {
 function handleInputValueError(input, errorElement) {
   const placeholder = input.getAttribute('placeholder');
 
-  input.addEventListener('input', (e) => {
+  input.addEventListener('input', () => {
     if (input.value.replace(/\s+/g, '') === '') {
       const message = `${placeholder} is invalid and is required`;
       handleInvalidInput(input, errorElement, message);
@@ -122,7 +122,7 @@ function handleInputWithRegexValueError(input, errorElement, regex) {
     }
   });
 
-  input.addEventListener('blur', (e) => {
+  input.addEventListener('blur', () => {
     if (!regex.test(input.value) || input.value === '') {
       const message = `${placeholder} is invalid and is required`;
       handleInvalidInput(input, errorElement, message);
