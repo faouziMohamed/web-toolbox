@@ -4,3 +4,5 @@ node_modules
 loader/fluide1/css
 connected/css
 connected/webfonts/
+loader/spiner/spinner3/**/*.css
+loader/spiner/spinner3/**/*.css.map
