@@ -224,6 +224,10 @@ button:disabled {
   object-fit: cover;
 }
 
+.home-page-link {
+  display: block;
+}
+
 .right-side {
   display: flex;
   flex-direction: column;
