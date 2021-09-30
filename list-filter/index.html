@@ -29,24 +29,25 @@
     <div class="transfer-wrapper">
       <section class="transfer-block">
         <header class="form-heading">
-          <h2 class="form-title">Find bank ID</h2>
+          <h2 class="form-title">Find User card ID</h2>
         </header>
         <div class="form-wrapper">
-          <form class="web-form">
+          <form class="web-form" id="search-form">
             <div class="search-wrapper">
               <label for="search-input" class="form-row search-row">
                 <input
                   type="text"
-                  name="id-search"
+                  name="searchId"
                   id="search-input"
-                  class="row-input"
+                  class="row-input search-input"
                   placeholder=" "
-                  pattern="\d{1,14}"
-                  maxlength="15"
                   autocomplete="off"
                 />
-                <span class="row-label"> Search an account by ID </span>
-                <button class="search-btn" id="search-btn">
+                <span class="row-label">
+                  <i class="row-label--icon fas fa-credit-card"></i>
+                  <span class="row-label--text">Type account ID</span>
+                </span>
+                <button class="search-btn" id="search-btn" name="searchBtn">
                   <i class="fas fa-search"></i>
                 </button>
               </label>
@@ -64,31 +65,26 @@
 
 <!-- 
 
-/**
- * @param {String} HTML representing a single element
- * @return {Element}
- */
-function htmlToElement(html) {
-    var template = document.createElement('template');
-    html = html.trim(); // Never return a text node of whitespace as the result
-    template.innerHTML = html;
-    return template.content.firstChild;
-}
-
-var td = htmlToElement('<td>foo</td>'),
-    div = htmlToElement('<div><span>nested</span> <span>stuff</span></div>');
-
-/**
- * @param {String} HTML representing any number of sibling elements
- * @return {NodeList} 
- */
-function htmlToElements(html) {
-    var template = document.createElement('template');
-    template.innerHTML = html;
-    return template.content.childNodes;
-}
-
-var rows = htmlToElements('<tr><td>foo</td></tr><tr><td>bar</td></tr>');
-
+<form class="web-form" id="search-form">
+  <div class="search-wrapper">
+    <label for="search-input" class="form-row search-row">
+      <input
+        type="text"
+        name="searchId"
+        id="search-input"
+        class="row-input"
+        placeholder=" "
+        autocomplete="off"
+      />
+      <span class="row-label"> Search an account by ID </span>
+      <button class="search-btn" id="search-btn" name="searchBtn">
+        <i class="fas fa-search"></i>
+      </button>
+    </label>
+    <div class="search-result" id="search-result">
+      <ul class="result-list" id="result-list"></ul>
+    </div>
+  </div>
+</form>
 
  -->

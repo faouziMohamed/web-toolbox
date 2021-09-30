@@ -1,32 +1,52 @@
-(async () => {
-  const url = '/api/users/accounts.json';
-  const { data = [] } = await fetch(url).then((res) => res.json());
-  const searchResult = document.querySelector('.search-result');
-  const resultList = document.querySelector('.result-list');
-  const searchInput = document.querySelector('#search-input');
-  const showResultBlock = () => searchResult?.classList.remove('hidden');
-  searchInput?.addEventListener('input', handleInputEvent);
-  hideResultBlock();
-
-  function hideResultBlock() {
-    searchResult?.classList.add('hidden');
-    resultList?.replaceChildren();
+class SearchBar {
+  constructor() {
+    this.searchResult = document.querySelector('.search-result');
+    this.resultList = document.querySelector('#result-list');
+    this.searchForm = document.querySelector('#search-form');
+    this.searchInput = this.searchForm.searchId;
+    this.searchBtn = this.searchForm.searchBtn;
+    this.addEventListener();
+    this.hideResultBlock();
   }
-
-  function handleInputEvent(e) {
-    const { value } = e.target;
+  async getData() {
+    const url = '/api/users/accounts.json';
+    const { data = [] } = await fetch(url).then((res) => res.json());
+    this.data = data;
+    return this.data;
+  }
+  showResultBlock() {
+    this.searchResult?.classList.remove('hidden');
+  }
+  hideResultBlock() {
+    this.searchResult?.classList.add('hidden');
+    this.resultList?.replaceChildren();
+  }
+  handleInputEvent() {
+    console.log(this.searchForm);
+    const { value } = this.searchInput;
     const typed = value?.toLowerCase().trim() || '';
-    !typed && hideResultBlock();
-    const filteredList = data.filter(
-      ({ id }) => typed && id.toLowerCase().includes(typed),
+    if (!typed) return this.hideResultBlock();
+
+    const filteredList = this.data.filter(({ id }) =>
+      id.toLowerCase().includes(typed),
     );
+
     if (filteredList.length) {
-      showResultBlock();
+      this.showResultBlock();
       const list = filteredList.map((item) => parseHTML(getResultItem(item)));
-      resultList?.replaceChildren(...list);
-    } else hideResultBlock();
+      this.resultList?.replaceChildren(...list);
+    } else this.hideResultBlock();
   }
-})();
+
+  addEventListener() {
+    this.getData().then((data) => {
+      this.searchBtn.addEventListener('click', () => this.handleInputEvent());
+      this.searchInput.addEventListener('input', () => this.handleInputEvent());
+    });
+  }
+}
+
+(() => new SearchBar())();
 
 function parseHTML(html) {
   const parser = new DOMParser();
@@ -38,28 +58,3 @@ const getResultItem = (item) =>
     <span class="result-id">${item.id}</span>
     <span class="result-name">${item.name}</span>
   </li>`;
-
-/*   <li class="result-item">
-  <span class="result-id">DE0045F78AA0395</span>
-  <span class="result-name">Faouzi Mohamed</span>
-  </li>
-  <li class="result-item">
-  <span class="result-id">DE0045F78AA0395</span>
-  <span class="result-name">Halim Akmal</span>
-  </li>
-  <li class="result-item">
-  <span class="result-id">DE0045F78AA0395</span>
-  <span class="result-name">Jean Pierre Dupont</span>
-  </li>
-  <li class="result-item">
-  <span class="result-id">DE0045F78AA0395</span>
-  <span class="result-name">Faouzi Mohamed</span>
-  </li>
-  <li class="result-item">
-  <span class="result-id">DE0045F78AA0395</span>
-  <span class="result-name">Marc Nikolae</span>
-  </li>
-  <li class="result-item">
-  <span class="result-id">DE0045F78960395</span>
-  <span class="result-name">Michael B. Jordan</span>
-  </li> */

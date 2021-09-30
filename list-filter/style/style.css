@@ -94,6 +94,9 @@ body {
   transform-origin: top left;
   transform: translateY(0.12rem);
   transition: transform 90ms ease-out;
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
 }
 
 .row-input {
