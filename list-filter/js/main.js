@@ -1,11 +1,14 @@
-import { hideElement, makeBold, modalTemplate, showElement } from './modals.js';
+import { modalTemplate } from './modals.js';
 import {
+  emptyAndClose,
   getResultItem,
   handleEnterKeyPres,
+  makeBold,
   parseHTML,
   postData,
   redirectTo,
   reloadPage,
+  showElement,
 } from './utils.js';
 
 /* eslint-disable no-console */
@@ -28,6 +31,7 @@ class TransferForm {
       this.handleInputID = this.handleInputID.bind(this);
       this.handleAmountInput = this.handleAmountInput.bind(this);
       this.passToNextSection = this.passToNextSection.bind(this);
+      this.handleSubmitBtn = this.handleSubmitBtn.bind(this);
       this.initializeForm();
       this.addEventListeners();
       this.hideResultBlock();
@@ -58,33 +62,20 @@ class TransferForm {
     });
 
     this.cancelBtn.addEventListener('click', () => {
-      console.log('canceled');
-      redirectTo('/');
-    });
-
-    this.submitBtn.addEventListener('click', async () => {
-      const { value: id } = this.searchInput;
-      const { value: amount } = this.amountInput;
-      const content = parseHTML(`<p>
-        You're about to send ${makeBold(`${amount}DH`)}  to ${makeBold(
-        id,
-      )}</p>`);
-      const btnCancelAction = () => {
-        hideElement(this.modalContainer);
-        this.modalContainer.replaceChildren();
-        reloadPage();
-      };
-
       const { modal } = modalTemplate({
-        title: 'Confirm Transfer',
-        content,
-        btnOkText: 'Send Money',
-        btnOkAction: async () => this.makeTransfer(),
-        btnCancelAction,
+        title: 'Confirm cancelation',
+        content: ' ',
+        question: 'Are you sure you want to cancel the transaction?',
+        btnOkText: 'No',
+        btnCancelText: 'Back to home',
+        btnOkAction: async () => emptyAndClose(this.modalContainer),
+        btnCancelAction: () => redirectTo('/'),
       });
       this.modalContainer.replaceChildren(modal);
       showElement(this.modalContainer);
     });
+    this.submitBtn.addEventListener('click', this.handleSubmitBtn);
+
     this.getData()
       .then(() =>
         ['focus', 'input'].forEach((event) => {
@@ -105,6 +96,24 @@ class TransferForm {
       const btn = s.querySelector('.form-next-btn');
       btn && s.addEventListener('keydown', handleEnterKeyPres(btn));
     });
+  }
+
+  handleSubmitBtn() {
+    const { value: id } = this.searchInput;
+    const { value: amount } = this.amountInput;
+    const content = parseHTML(`<p>
+        You're about to send ${makeBold(`${amount} DH`)}  to ${makeBold(
+      id,
+    )}</p>`);
+    const { modal } = modalTemplate({
+      title: 'Confirm Transfer',
+      content,
+      btnOkText: 'Send Money',
+      btnOkAction: async () => this.makeTransfer(),
+      btnCancelAction: () => reloadPage(),
+    });
+    this.modalContainer.replaceChildren(modal);
+    showElement(this.modalContainer);
   }
 
   async makeTransfer() {
@@ -134,7 +143,7 @@ class TransferForm {
       });
       this.modalContainer.replaceChildren(modal);
     }
-    this.modalContainer.classList.remove('hidden');
+    showElement(this.modalContainer);
   }
 
   passToNextSection(btn, index) {

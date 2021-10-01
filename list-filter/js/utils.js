@@ -45,3 +45,22 @@ export function newElement(name, attributes = {}, childs = []) {
   node.replaceChildren(...childs);
   return node;
 }
+
+export function hideElement(el) {
+  el.classList.add('hidden');
+}
+
+export function showElement(el) {
+  el.classList.remove('hidden');
+}
+
+export const makeBold = (str) => `<span class="bold-text">${str}</span>`;
+
+export function emptyElement(el) {
+  el.replaceChildren();
+}
+
+export function emptyAndClose(el) {
+  emptyElement(el);
+  hideElement(el);
+}

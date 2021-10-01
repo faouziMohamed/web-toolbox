@@ -1,4 +1,4 @@
-import { parseHTML } from './utils.js';
+import { hideElement, parseHTML } from './utils.js';
 
 export const modalTemplate = ({
   title = 'Confirm',
@@ -49,13 +49,3 @@ export const modalTemplate = ({
 
   return { modal, okBtn, cancelBtn };
 };
-
-export function hideElement(el) {
-  el.classList.add('hidden');
-}
-
-export function showElement(el) {
-  el.classList.remove('hidden');
-}
-
-export const makeBold = (str) => `<span class="bold-text">${str}</span>`;
