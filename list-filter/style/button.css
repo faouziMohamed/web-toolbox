@@ -1,0 +1,74 @@
+:root {
+  --form-btn-ok-with: 2.1rem;
+  --form-input-radius: 0.3rem;
+}
+
+button:disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.form-next-btn:not(:disabled) {
+  animation: bg-change 1s ease;
+}
+
+@keyframes bg-change {
+  0% {
+    background-color: rgba(203, 206, 6, 0.062);
+  }
+  50% {
+    background-color: #00ffffcb;
+  }
+  100% {
+    background-color: rgba(206, 193, 6, 0.055);
+  }
+}
+
+.btn {
+  --btn-default-color: rgb(249, 252, 214);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  border-radius: var(--form-input-radius);
+  border: 2px solid rgb(250, 248, 159);
+  background-color: var(--btn-default-color);
+  color: rgb(39, 37, 37);
+  cursor: pointer;
+  box-shadow: 0 0 0.1rem 0.01rem inset rgba(216, 213, 10, 0.767);
+}
+
+.btn:hover,
+.btn:focus {
+  border: 2px solid rgb(230, 226, 5);
+  background-color: rgb(250, 246, 2);
+}
+
+.btn-icon {
+  --btn-icon-color: rgba(23, 32, 30, 0.842);
+  color: var(--btn-icon-color);
+  font-weight: 700;
+  font-family: 'Font Awesome 5 Pro';
+}
+
+.btn-cancel {
+  background-color: #fffeb0;
+}
+
+.btn-submit {
+  background-color: #98ffe9;
+  box-shadow: 0 0 0.1rem 0.01rem inset #28ebda;
+  border: 2px solid #07dfb0;
+}
+
+.btn-submit:hover,
+.btn-submit:focus {
+  background-color: #00ffc8;
+  box-shadow: 0 0 0.1rem 0.01rem inset #02c9b8;
+  border: 2px solid #20dbb3;
+}

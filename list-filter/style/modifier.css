@@ -1,0 +1,22 @@
+.hidden {
+  display: none;
+}
+
+.disabled {
+  /* position: relative; */
+  box-shadow: none;
+}
+
+.disabled::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: var(--form-input-radius);
+  opacity: 0.7;
+  background-color: rgba(161, 161, 161, 0.521);
+  z-index: 1;
+  cursor: not-allowed;
+}
