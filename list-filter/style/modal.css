@@ -1,0 +1,126 @@
+.modal-container {
+  font-family: 'Roboto', ubuntu, sans-serif;
+  background-color: #2121214d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  z-index: 100;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(251, 255, 252);
+  max-width: 300px;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  box-shadow: -4px 4px 2px #c4c8c6;
+  color: #0b4546;
+  background-image: linear-gradient(to bottom right, #eff4f1, #f5f5f5, #fff);
+  border: 1px solid #edebeba8;
+}
+
+.modal-title {
+  border-bottom: 1px solid #02192d08;
+}
+
+.modal-body {
+  padding-block: 0.4rem;
+}
+
+.modal-txt {
+  padding-block: 0.4rem 0;
+  color: #070121;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.bold-text {
+  font-weight: 700;
+}
+.modal-btns {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.modal-btn {
+  display: block;
+  padding: 0.3rem;
+  min-width: 0.5rem;
+  width: 9em;
+  border-radius: 0.8rem;
+  border: 1px solid #29282824;
+  background-color: #fbfcf978;
+  color: #1a2a2a;
+  font-size: 0.9rem;
+  font-weight: 700;
+  /* box-shadow: -1px 1px 2px #0006; */
+  cursor: pointer;
+  transition: transform 0.1ms ease-in;
+}
+
+.btn-primary {
+  background-color: #57ff89;
+  background-image: linear-gradient(
+    to bottom left,
+    #08a336de,
+    #57ff89,
+    #06c83ff2
+  );
+  box-shadow: -2px 1px 2px #00000078;
+  color: #002426ed;
+}
+
+.btn-secondary {
+  background-image: linear-gradient(
+    to bottom left,
+    #ffffff61,
+    #c9ccb9d4,
+    #ffffff63
+  );
+  color: #464444;
+}
+
+.modal-btn:hover {
+  box-shadow: -2px 1px 2px #00000078;
+}
+
+.modal-btn:active {
+  transform: translate(0, -3%);
+  box-shadow: -1px 1px 4px black;
+}
+
+.btn-primary:hover {
+  background-color: #18e655;
+  background-image: linear-gradient(
+    to bottom left,
+    #05ff15de,
+    #02f940,
+    #048229f2
+  );
+}
+
+.btn-secondary:hover {
+  background-image: linear-gradient(
+    to bottom left,
+    #929488d4,
+    #c9ccb9d4,
+    #99998ed4
+  );
+  color: black;
+}
+
+.centerRow {
+  justify-content: center;
+}
+
+.centerCol {
+  align-items: center;
+}

@@ -1,3 +1,13 @@
+import { hideElement, makeBold, modalTemplate, showElement } from './modals.js';
+import {
+  getResultItem,
+  handleEnterKeyPres,
+  parseHTML,
+  postData,
+  redirectTo,
+  reloadPage,
+} from './utils.js';
+
 /* eslint-disable no-console */
 class TransferForm {
   constructor() {
@@ -11,11 +21,13 @@ class TransferForm {
       this.searchInput = this.form.searchId;
       this.amountInput = this.form.amount;
       this.btnGroup = this.form.querySelectorAll('[id^=form-btn-]');
+      this.cancelBtn = this.form.querySelector('#form-btn-cancel');
+      this.submitBtn = this.form.querySelector('#form-btn-submit');
+      this.modalContainer = this.form.querySelector('#modal-container');
       this.data = [];
       this.handleInputID = this.handleInputID.bind(this);
       this.handleAmountInput = this.handleAmountInput.bind(this);
       this.passToNextSection = this.passToNextSection.bind(this);
-
       this.initializeForm();
       this.addEventListeners();
       this.hideResultBlock();
@@ -36,14 +48,43 @@ class TransferForm {
 
   addEventListeners() {
     this.form.querySelectorAll('button')?.forEach((btn) => {
-      btn.disabled = true;
       btn.addEventListener('click', (e) => e.preventDefault());
+      if (btn.classList.contains('modal-btn')) return;
+      btn.disabled = true;
     });
 
     this.form.querySelectorAll('.form-next-btn')?.forEach((btn, index) => {
       btn.addEventListener('click', () => this.passToNextSection(btn, index));
     });
 
+    this.cancelBtn.addEventListener('click', () => {
+      console.log('canceled');
+      redirectTo('/');
+    });
+
+    this.submitBtn.addEventListener('click', async () => {
+      const { value: id } = this.searchInput;
+      const { value: amount } = this.amountInput;
+      const content = parseHTML(`<p>
+        You're about to send ${makeBold(`${amount}DH`)}  to ${makeBold(
+        id,
+      )}</p>`);
+      const btnCancelAction = () => {
+        hideElement(this.modalContainer);
+        this.modalContainer.replaceChildren();
+        reloadPage();
+      };
+
+      const { modal } = modalTemplate({
+        title: 'Confirm Transfer',
+        content,
+        btnOkText: 'Send Money',
+        btnOkAction: async () => this.makeTransfer(),
+        btnCancelAction,
+      });
+      this.modalContainer.replaceChildren(modal);
+      showElement(this.modalContainer);
+    });
     this.getData()
       .then(() =>
         ['focus', 'input'].forEach((event) => {
@@ -64,6 +105,36 @@ class TransferForm {
       const btn = s.querySelector('.form-next-btn');
       btn && s.addEventListener('keydown', handleEnterKeyPres(btn));
     });
+  }
+
+  async makeTransfer() {
+    const { value: id } = this.searchInput;
+    const { value: amount } = this.amountInput;
+    const url = '/api/users/accounts/transfer.json';
+    const data = { id, amount };
+
+    const { status /* json: resJson */ } = await postData({ url, data });
+    if ([200, 201].includes(status)) {
+      const { modal } = modalTemplate({
+        title: 'Transfer Success',
+        content: 'Your transfer has been successfully completed',
+        btnOkText: 'Back to Home',
+        btnOkAction: () => redirectTo('/'),
+        disableBtn: 'cancel',
+      });
+      this.modalContainer.replaceChildren(modal);
+    } else {
+      const { modal } = modalTemplate({
+        title: 'Transfer Failed',
+        content: 'Your transfer has failed',
+        btnOkText: 'Retry the transaction',
+        btnOkAction: () => reloadPage(),
+        btnCancelText: 'Back to Home',
+        btnCancelAction: () => redirectTo('/'),
+      });
+      this.modalContainer.replaceChildren(modal);
+    }
+    this.modalContainer.classList.remove('hidden');
   }
 
   passToNextSection(btn, index) {
@@ -152,22 +223,3 @@ class TransferForm {
 }
 
 (() => new TransferForm())();
-
-function parseHTML(html) {
-  const parser = new DOMParser();
-  return parser.parseFromString(html, 'text/html').body.firstChild;
-}
-
-function handleEnterKeyPres(btn) {
-  return (e) => {
-    if (e.key !== 'Enter' || btn.disabled) return;
-    btn.click();
-  };
-}
-
-function getResultItem(item) {
-  return `<li class="result-item" tabindex="0" data-id="${item.id}">
-            <span class="result-id">${item.id}</span>
-            <span class="result-name">${item.name}</span>
-          </li>`;
-}

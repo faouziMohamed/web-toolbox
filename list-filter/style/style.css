@@ -28,12 +28,13 @@ body {
 }
 
 .transfer-form {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
   width: 100%;
-  padding-inline: 0.5rem;
+  padding: 1rem 0.5rem;
 }
 
 @media (min-width: 500px) {
