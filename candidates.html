@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candidates | Evote app</title>
+    <link
+      rel="shortcut icon"
+      href="/web-toolbox/images/logo/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="preload" href="/web-toolbox/styles/style.css" as="style" />
+    <link rel="stylesheet" href="/web-toolbox/styles/style.css" />
+    <link
+      rel="preload"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.15.2/css/all.css"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;1,100;1,200;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="root">
+      <div class="left-side-parent">
+        <div class="left-side">
+          <header class="left-side__header">
+            <a href="/web-toolbox/" class="left-side__site-logo-link">
+              <img
+                src="/web-toolbox/images/e-vote-ws.svg"
+                width="70"
+                alt="Website logo"
+                class="left-side__site-logo"
+              />
+            </a>
+            <div class="left-side__username-wrap">
+              <h1 class="left-side__title">
+                <a class="left-side__user-profil-link" href="/web-toolbox/#">
+                  <div class="left-side__img-profil-wrapper">
+                    <img
+                      src="/web-toolbox/images/coder.gif"
+                      width="50"
+                      alt="User profile picture"
+                      class="left-side__userprofil-pic"
+                    />
+                  </div>
+                  <span class="left-side__user-fullname"> Faouzi Mohamed </span>
+                </a>
+              </h1>
+            </div>
+            <nav class="site-nav">
+              <ul class="site-nav__list">
+                <li class="site-nav__item">
+                  <a href="/web-toolbox/index.html" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-person-booth"> </i>
+                    <span class="nav-text">Vote</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a
+                    href="/web-toolbox/candidates.html"
+                    class="site-nav__link site-nav__active-tab"
+                  >
+                    <i class="left-nav-icon fas fa-id-card"> </i>
+                    <span class="nav-text">Candidates</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a href="/web-toolbox/results.html" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-chart-bar"> </i>
+                    <span class="nav-text">Results</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a href="#" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-user"> </i>
+                    <span class="nav-text">Profile</span>
+                  </a>
+                </li>
+                <li class="site-nav__item">
+                  <a href="/web-toolbox/admin.html" class="site-nav__link">
+                    <i class="left-nav-icon fas fa-user-cog"></i>
+                    <span class="nav-text">Admin</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </header>
+        </div>
+      </div>
+
+      <div class="main-page">
+        <div class="main-page__navbar">
+          <div class="burger-menu">
+            <input
+              type="checkbox"
+              id="menu-toggler"
+              class="burger-menu__checkbox"
+            />
+            <label for="menu-toggler" class="burger-menu__label"></label>
+          </div>
+
+          <ul class="top-navbar">
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn lang-btn">
+                <img
+                  src="/web-toolbox/images/icons/english.svg"
+                  class="lang-flag"
+                  alt="English flag"
+                  width="50"
+                />
+                <div class="lang-drop-down hidden" aria-hidden="true">
+                  <ul class="lang-list">
+                    <li class="lang-item" tabindex="0" data-lang="en">
+                      <img
+                        src="/web-toolbox/images/icons/english.svg"
+                        alt="English"
+                        class="lang-img"
+                        data-lang="en"
+                      />
+                      <span class="lang-text">English</span>
+                    </li>
+                    <li class="lang-item" tabindex="0" data-lang="fr">
+                      <img
+                        src="/web-toolbox/images/icons/french.svg"
+                        alt="French"
+                        class="lang-img"
+                        data-lang="fr"
+                      />
+                      <span class="lang-text">French</span>
+                    </li>
+                  </ul>
+                </div>
+              </button>
+            </li>
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn notif-btn">
+                <i class="fas fa-bell fa-1x"> </i>
+              </button>
+            </li>
+            <li class="top-navbar__item">
+              <button class="top-navbar__btn profil-btn">
+                <img
+                  alt="User profile picture"
+                  class="user-profil-thumb"
+                  src="/web-toolbox/images/coder.gif"
+                  title="Faouzi Mohamed's profile picture"
+                  width="40"
+                />
+                <div class="user-menu-card hidden" aria-label="menu">
+                  <div class="user-profile">
+                    <figure class="user-figure">
+                      <div class="user-picture">
+                        <img
+                          src="/web-toolbox/images/coder.gif"
+                          alt="User profile picture"
+                          class="user-picture-img"
+                          width="138"
+                          height="138"
+                        />
+                      </div>
+                      <figcaption class="user-name">Faouzi Mohamed</figcaption>
+                    </figure>
+                  </div>
+                  <nav class="user-actions-wrapper">
+                    <ul class="action-wrapper">
+                      <li class="action-item">
+                        <a href="/web-toolbox/myaccount" class="action-item-link">
+                          <i class="far fa-user-alt"> </i>
+                          <span class="link-action-text">Account</span>
+                        </a>
+                      </li>
+                      <li class="action-item">
+                        <a href="/web-toolbox/notifs" class="action-item-link">
+                          <i class="fas fa-bell"> </i>
+                          <span class="link-action-text">Setting</span>
+                        </a>
+                      </li>
+                      <li class="action-item">
+                        <a
+                          href="/web-toolbox/logout"
+                          class="action-item-link action-logout"
+                        >
+                          <span class="link-action-text">Logout</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </div>
+        <main class="main-content-root">
+          <header class="main-content-header">
+            <div class="breadcrumb">
+              <div class="base breadcrumb__path">Home</div>
+              <div class="breadcrumb__path active">Candidates</div>
+            </div>
+            <h2 class="greeting-msg">Hi, welcome back</h2>
+          </header>
+          <div class="main-content">
+            <div
+              class="candidate-modal-container hidden"
+              tabindex="-1"
+              aria-labelledby="candidate-full-details__name"
+              aria-describedby="candidate-modal-description"
+              aria-hidden="true"
+              id="candidate-modal-container"
+            ></div>
+            <ul class="list-candidates has-loader">
+              <li>
+                <div class="loading-container">
+                  <ul class="bubble-container">
+                    <li class="bubble-item"></li>
+                    <li class="bubble-item"></li>
+                    <li class="bubble-item"></li>
+                    <li class="bubble-item"></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="/web-toolbox/js/main.js" type="module" async></script>
+  </body>
+</html>

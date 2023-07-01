@@ -1,0 +1,22 @@
+.transparent-color {
+  color: transparent;
+}
+
+.new-pair {
+  background-image: linear-gradient(rgba(0, 0, 255, 0.303) 0%, rgb(255, 255, 255) 50%, rgba(0, 0, 139, 0.323) 100%);
+}
+.new-pair__content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.new-pair__content__header {
+  align-items: center;
+}
+.new-pair .page-header {
+  text-align: center;
+}
+
+/*# sourceMappingURL=new-pair.css.map */
